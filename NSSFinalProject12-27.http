@@ -1,0 +1,6 @@
+@NSSFinalProject12_27_HostAddress = http://localhost:5001
+
+GET {{NSSFinalProject12_27_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
