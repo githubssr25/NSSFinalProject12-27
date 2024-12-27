@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using NSSFinalProject12_27.Context;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,10 @@ builder.Services.AddCors(options =>
                      .AllowAnyMethod();
     });
 });
+
+builder.Services.AddAutoMapper(typeof(Program));
+
+
 
 // Add Identity services for authentication
 builder.Services.AddIdentityCore<IdentityUser>(options =>
