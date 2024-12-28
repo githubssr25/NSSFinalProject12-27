@@ -197,107 +197,107 @@ namespace NSSFinalProject12_27.Context
     );
 
 //     // Seed Repositories
-//     modelBuilder.Entity<Repository>().HasData(
-//         new Repository
-//         {
-//             RepositoryId = 1,
-//             RepositoryName = "Backend Framework",
-//             RepositoryUrl = "https://github.com/example/backend-framework",
-//             Description = "A powerful backend framework for building scalable applications.",
-//             Language = "C#",
-//             Stars = 1200,
-//             CategoryId = 1
-//         },
-//         new Repository
-//         {
-//             RepositoryId = 2,
-//             RepositoryName = "Frontend Library",
-//             RepositoryUrl = "https://github.com/example/frontend-library",
-//             Description = "A sleek and efficient frontend library.",
-//             Language = "JavaScript",
-//             Stars = 950,
-//             CategoryId = 2
-//         },
-//         new Repository
-//         {
-//             RepositoryId = 3,
-//             RepositoryName = "AI Toolkit",
-//             RepositoryUrl = "https://github.com/example/ai-toolkit",
-//             Description = "A comprehensive toolkit for AI research.",
-//             Language = "Python",
-//             Stars = 2500,
-//             CategoryId = 3
-//         },
-//         new Repository
-//         {
-//             RepositoryId = 4,
-//             RepositoryName = "Data Science Hub",
-//             RepositoryUrl = "https://github.com/example/data-science-hub",
-//             Description = "A hub of resources for data scientists.",
-//             Language = "R",
-//             Stars = 1800,
-//             CategoryId = 5
-//         },
-//         new Repository
-//         {
-//             RepositoryId = 5,
-//             RepositoryName = "Testing Framework",
-//             RepositoryUrl = "https://github.com/example/testing-framework",
-//             Description = "An intuitive testing framework.",
-//             Language = "Java",
-//             Stars = 700,
-//             CategoryId = 7
-//         }
-//     );
+    modelBuilder.Entity<Repository>().HasData(
+        new Repository
+        {
+            RepositoryId = 1,
+            RepositoryName = "Backend Framework",
+            RepositoryUrl = "https://github.com/example/backend-framework",
+            Description = "A powerful backend framework for building scalable applications.",
+            Language = "C#",
+            Stars = 1200,
+            CategoryId = 1
+        },
+        new Repository
+        {
+            RepositoryId = 2,
+            RepositoryName = "Frontend Library",
+            RepositoryUrl = "https://github.com/example/frontend-library",
+            Description = "A sleek and efficient frontend library.",
+            Language = "JavaScript",
+            Stars = 950,
+            CategoryId = 2
+        },
+        new Repository
+        {
+            RepositoryId = 3,
+            RepositoryName = "AI Toolkit",
+            RepositoryUrl = "https://github.com/example/ai-toolkit",
+            Description = "A comprehensive toolkit for AI research.",
+            Language = "Python",
+            Stars = 2500,
+            CategoryId = 3
+        },
+        new Repository
+        {
+            RepositoryId = 4,
+            RepositoryName = "Data Science Hub",
+            RepositoryUrl = "https://github.com/example/data-science-hub",
+            Description = "A hub of resources for data scientists.",
+            Language = "R",
+            Stars = 1800,
+            CategoryId = 5
+        },
+        new Repository
+        {
+            RepositoryId = 5,
+            RepositoryName = "Testing Framework",
+            RepositoryUrl = "https://github.com/example/testing-framework",
+            Description = "An intuitive testing framework.",
+            Language = "Java",
+            Stars = 700,
+            CategoryId = 7
+        }
+    );
 
 //     // Seed UserRepositories
 //  // Seed UserRepositories
-// modelBuilder.Entity<UserRepository>().HasData(
-//     new UserRepository { UserId = "1", RepositoryId = 1, SavedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc) },
-//     new UserRepository { UserId = "2", RepositoryId = 2, SavedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc) },
-//     new UserRepository { UserId = "3", RepositoryId = 3, SavedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc) },
-//     new UserRepository { UserId = "4", RepositoryId = 4, SavedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc) },
-//     new UserRepository { UserId = "5", RepositoryId = 5, SavedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc) }
-// );
+modelBuilder.Entity<UserRepository>().HasData(
+    new UserRepository { UserId = "1", RepositoryId = 1, SavedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc) },
+    new UserRepository { UserId = "2", RepositoryId = 2, SavedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc) },
+    new UserRepository { UserId = "3", RepositoryId = 3, SavedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc) },
+    new UserRepository { UserId = "4", RepositoryId = 4, SavedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc) },
+    new UserRepository { UserId = "5", RepositoryId = 5, SavedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc) }
+);
 
-// modelBuilder.Entity<Annotation>().HasData(
-//     new Annotation
-//     {
-//         AnnotationId = 1,
-//         UserId = "1",
-//         RepositoryId = 1,
-//         Type = "Note",
-//         Content = "This backend framework looks promising for my next project.",
-//         CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
-//     },
-//     new Annotation
-//     {
-//         AnnotationId = 2,
-//         UserId = "2",
-//         RepositoryId = 2,
-//         Type = "Note",
-//         Content = "Great library for frontend animations.",
-//         CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
-//     },
-//     new Annotation
-//     {
-//         AnnotationId = 3,
-//         UserId = "3",
-//         RepositoryId = 3,
-//         Type = "Tag",
-//         Content = "AI",
-//         CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
-//     },
-//     new Annotation
-//     {
-//         AnnotationId = 4,
-//         UserId = "4",
-//         RepositoryId = 4,
-//         Type = "Note",
-//         Content = "Data science repo with useful algorithms.",
-//         CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
-//     }
-// );
+modelBuilder.Entity<Annotation>().HasData(
+    new Annotation
+    {
+        AnnotationId = 1,
+        UserId = "1",
+        RepositoryId = 1,
+        Type = "Note",
+        Content = "This backend framework looks promising for my next project.",
+        CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
+    },
+    new Annotation
+    {
+        AnnotationId = 2,
+        UserId = "2",
+        RepositoryId = 2,
+        Type = "Note",
+        Content = "Great library for frontend animations.",
+        CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
+    },
+    new Annotation
+    {
+        AnnotationId = 3,
+        UserId = "3",
+        RepositoryId = 3,
+        Type = "Tag",
+        Content = "AI",
+        CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
+    },
+    new Annotation
+    {
+        AnnotationId = 4,
+        UserId = "4",
+        RepositoryId = 4,
+        Type = "Note",
+        Content = "Data science repo with useful algorithms.",
+        CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
+    }
+);
 
 
 

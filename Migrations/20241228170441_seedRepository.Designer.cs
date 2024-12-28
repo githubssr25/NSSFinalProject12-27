@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NSSFinalProject12_27.Context;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NSSFinalProject12_27.Migrations
 {
     [DbContext(typeof(NSSFinalProjectDbContext))]
-    partial class NSSFinalProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241228170441_seedRepository")]
+    partial class seedRepository
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -187,44 +190,6 @@ namespace NSSFinalProject12_27.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Annotations");
-
-                    b.HasData(
-                        new
-                        {
-                            AnnotationId = 1,
-                            Content = "This backend framework looks promising for my next project.",
-                            CreatedAt = new DateTime(2024, 12, 28, 17, 5, 49, 630, DateTimeKind.Utc).AddTicks(7900),
-                            RepositoryId = 1,
-                            Type = "Note",
-                            UserId = "1"
-                        },
-                        new
-                        {
-                            AnnotationId = 2,
-                            Content = "Great library for frontend animations.",
-                            CreatedAt = new DateTime(2024, 12, 28, 17, 5, 49, 630, DateTimeKind.Utc).AddTicks(7900),
-                            RepositoryId = 2,
-                            Type = "Note",
-                            UserId = "2"
-                        },
-                        new
-                        {
-                            AnnotationId = 3,
-                            Content = "AI",
-                            CreatedAt = new DateTime(2024, 12, 28, 17, 5, 49, 630, DateTimeKind.Utc).AddTicks(7900),
-                            RepositoryId = 3,
-                            Type = "Tag",
-                            UserId = "3"
-                        },
-                        new
-                        {
-                            AnnotationId = 4,
-                            Content = "Data science repo with useful algorithms.",
-                            CreatedAt = new DateTime(2024, 12, 28, 17, 5, 49, 630, DateTimeKind.Utc).AddTicks(7900),
-                            RepositoryId = 4,
-                            Type = "Note",
-                            UserId = "4"
-                        });
                 });
 
             modelBuilder.Entity("NSSFinalProject.Models.Category", b =>
@@ -454,7 +419,7 @@ namespace NSSFinalProject12_27.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2b05769e-ff68-4c90-91af-0b4491d94ba6",
+                            ConcurrencyStamp = "bf0d9835-1bbe-4d46-8f6b-2395404a57cf",
                             Email = "john.doe@example.com",
                             EmailConfirmed = true,
                             FirstName = "John",
@@ -462,9 +427,9 @@ namespace NSSFinalProject12_27.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "JOHN.DOE@EXAMPLE.COM",
                             NormalizedUserName = "JOHN_DOE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKrj1yfRqvUstaluX5i3xk95YhkT8YMSDLMQ7bIUO0j29EXp0/oxj1j0IXGL0G+uYQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGqriuHW01Gcc/oprmlcedvqJKmtvBkuMhBSNag+1Xx0HpHlNr4vEANTxoNBtLA8BA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d5bf3f92-91eb-4a10-b0f9-3148446e2bfb",
+                            SecurityStamp = "8293b774-3f0a-412f-9034-a13eaf1c274b",
                             TwoFactorEnabled = false,
                             UserName = "john_doe"
                         },
@@ -472,7 +437,7 @@ namespace NSSFinalProject12_27.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "27adca09-6547-45e4-bfa7-ea3552bce54c",
+                            ConcurrencyStamp = "d13468d8-8f05-4af2-af67-e9d6e8e4b609",
                             Email = "jane.smith@example.com",
                             EmailConfirmed = true,
                             FirstName = "Jane",
@@ -480,9 +445,9 @@ namespace NSSFinalProject12_27.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "JANE.SMITH@EXAMPLE.COM",
                             NormalizedUserName = "JANE_SMITH",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHLWd8+7ICZzhK8e+4yCYldSXKElj4pHehD2MfraBPtnYKCosZxRT8sW58tBak5ATA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMoUWHW6y/dZBvG3Y30WuyAhPnVERdmORYltT6qv3TerDZ8bdKGqDpV8CWzD4+Z8lA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1b102386-557f-472e-a980-15ca142eba08",
+                            SecurityStamp = "28ccf65d-967d-417c-874d-2069b84cd0aa",
                             TwoFactorEnabled = false,
                             UserName = "jane_smith"
                         },
@@ -490,7 +455,7 @@ namespace NSSFinalProject12_27.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b628ed1b-fb53-4a4f-8cc7-52bbb4199090",
+                            ConcurrencyStamp = "61eed288-687a-4fe5-a9cf-9111e6acb351",
                             Email = "alice.brown@example.com",
                             EmailConfirmed = true,
                             FirstName = "Alice",
@@ -498,9 +463,9 @@ namespace NSSFinalProject12_27.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ALICE.BROWN@EXAMPLE.COM",
                             NormalizedUserName = "ALICE_BROWN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPkQmjfkwiMRNOTN2qr0fq6s3c4WW5QX6rzlkjZHhF4PlUYcsV2sq/94+WR2f42IGA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPyvVbBGhOb8RDAuDjKy8VECTw5YC1RZYPxVqxJVbgWR6a4cCKpWDdwpu54hlnqJeQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b3d00652-6ba6-4a4c-92e8-96c4ca4513c3",
+                            SecurityStamp = "9582a9fb-5533-4767-a26b-2a58f163ea5f",
                             TwoFactorEnabled = false,
                             UserName = "alice_brown"
                         },
@@ -508,7 +473,7 @@ namespace NSSFinalProject12_27.Migrations
                         {
                             Id = "4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ea5e8395-ba39-41c4-8820-dbe0723d19fe",
+                            ConcurrencyStamp = "e3755889-f27f-4396-b47e-af9bac3a0975",
                             Email = "bob.jones@example.com",
                             EmailConfirmed = true,
                             FirstName = "Bob",
@@ -516,9 +481,9 @@ namespace NSSFinalProject12_27.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "BOB.JONES@EXAMPLE.COM",
                             NormalizedUserName = "BOB_JONES",
-                            PasswordHash = "AQAAAAIAAYagAAAAEARG/LLTt3hQLEvWXKGXniO7WJUGz9IT0+gyXFxmD8kfox7VmhpL4wC+qSKD46VPuA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDAJ2ZzBpWI2kxfjYOdBunJTZwbFstjSZjXb/1jKxeOsa+A8n+gqc5jJmASUJxgyvQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c777d997-e91c-4359-81fa-fce15781ce74",
+                            SecurityStamp = "78057bb1-e301-4023-87d0-c549cf640109",
                             TwoFactorEnabled = false,
                             UserName = "bob_jones"
                         },
@@ -526,7 +491,7 @@ namespace NSSFinalProject12_27.Migrations
                         {
                             Id = "5",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2f13816b-553d-4a4b-a243-c5f3c85b7fa4",
+                            ConcurrencyStamp = "923ec0c2-a566-4bad-969c-04bbc21df95c",
                             Email = "carla.white@example.com",
                             EmailConfirmed = true,
                             FirstName = "Carla",
@@ -534,9 +499,9 @@ namespace NSSFinalProject12_27.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "CARLA.WHITE@EXAMPLE.COM",
                             NormalizedUserName = "CARLA_WHITE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAylTtHIAkiQw6fmYVZggt3PbIMDe5mMTuNwENYHUmHx0mZ4h9REpV58CbrvhQX8lA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOgjhXoH+OU1ju+l+NSWo/5v9iSKGmbKbyQNSa2N9fRElZrMXEcojRHdhFtU6Nhr3g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1f5ae468-820d-4e78-a2df-ef3db21cb1e7",
+                            SecurityStamp = "c0e7d23b-e796-4d6b-9200-1a02eee32bc9",
                             TwoFactorEnabled = false,
                             UserName = "carla_white"
                         },
@@ -544,7 +509,7 @@ namespace NSSFinalProject12_27.Migrations
                         {
                             Id = "6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3f3b292a-229a-43d5-a25d-fa86e0d6d553",
+                            ConcurrencyStamp = "36ba88da-4524-4b02-b294-0a658c0dded4",
                             Email = "michael.green@example.com",
                             EmailConfirmed = true,
                             FirstName = "Michael",
@@ -552,9 +517,9 @@ namespace NSSFinalProject12_27.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "MICHAEL.GREEN@EXAMPLE.COM",
                             NormalizedUserName = "MICHAEL_GREEN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHH6b9bE7fxe1e5TVmnWQOZ+OxWQETyGsPFRfCCoZxrKpN89MHg7nYNPLixTcGxCOA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFoDtoQpxICCYn1tuPCCwjQwsfNM5ovPQr0OuHyCcY+NIi3B2T3OOhEcftfFSXu+mw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fae734cd-d8cd-4230-bc87-a1e2052e22b5",
+                            SecurityStamp = "94eca704-27df-4fd5-ae18-fcda6874ae5f",
                             TwoFactorEnabled = false,
                             UserName = "michael_green"
                         },
@@ -562,7 +527,7 @@ namespace NSSFinalProject12_27.Migrations
                         {
                             Id = "7",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4d1d10e0-9cf7-4fe1-8b3b-bc4a3f69abac",
+                            ConcurrencyStamp = "ab5e4963-093e-4cf4-b88a-8200fd86ef87",
                             Email = "linda.lee@example.com",
                             EmailConfirmed = true,
                             FirstName = "Linda",
@@ -570,9 +535,9 @@ namespace NSSFinalProject12_27.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "LINDA.LEE@EXAMPLE.COM",
                             NormalizedUserName = "LINDA_LEE",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBGYSPfMmDPnx7L2fJaaG2EyARJc5cSH3KJ+9aZR8lIaA0+44OTescuZZyN/c7Au/Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKLD+ZeU3TRsC9vuTXyfkXBqUrSRf/X1bohvfZOIXfXwawjwysJTyOGDzRguDJL9XQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f57eb648-6a26-4f84-b16f-ac3edd1d60ab",
+                            SecurityStamp = "4dd69c0a-6df2-403e-8c20-0ac47bb5c6e2",
                             TwoFactorEnabled = false,
                             UserName = "linda_lee"
                         },
@@ -580,7 +545,7 @@ namespace NSSFinalProject12_27.Migrations
                         {
                             Id = "8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0c7785e1-6e10-4c6f-95b3-0ca5383cfeef",
+                            ConcurrencyStamp = "2537d880-80b5-4b27-b81f-5540f3540885",
                             Email = "james.brown@example.com",
                             EmailConfirmed = true,
                             FirstName = "James",
@@ -588,9 +553,9 @@ namespace NSSFinalProject12_27.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "JAMES.BROWN@EXAMPLE.COM",
                             NormalizedUserName = "JAMES_BROWN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMv9+VrTEau/h43Ng34LWZVoIdUnrHIyaJ7zrb1NI1zgxthKb8cXjjOowEGdJN/D2w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAuBZK9As6NJxAYgEgs8fvoOTr2zTBp0nmk6Uuk8nYUCW+NjxjISGx25fhEJ9GHzww==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "73333531-eb3a-481e-90c9-5531a48a548b",
+                            SecurityStamp = "34834518-7ba4-48eb-a6ae-d28a551bef6b",
                             TwoFactorEnabled = false,
                             UserName = "james_brown"
                         },
@@ -598,7 +563,7 @@ namespace NSSFinalProject12_27.Migrations
                         {
                             Id = "9",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fc1705f1-1b5b-4591-ab36-716b6c7eadf2",
+                            ConcurrencyStamp = "41781115-84d5-4da0-98ca-3ed9b781ab7e",
                             Email = "emma.clark@example.com",
                             EmailConfirmed = true,
                             FirstName = "Emma",
@@ -606,9 +571,9 @@ namespace NSSFinalProject12_27.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "EMMA.CLARK@EXAMPLE.COM",
                             NormalizedUserName = "EMMA_CLARK",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP5yrnNDNQFB+VkCkJ4ke1qvExGJrGzaGwbpoRCuwYUljf9P2BsNkFjUqTyrBzZpeQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAdhJ2ZpubNZOO35/9LUKhhnedBZ1oQciOhuyqZDRnzrdVOvF0R3cqnGgemow/bgzA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f91592b0-ae3b-4462-9b88-0104178f8db5",
+                            SecurityStamp = "80f70f4e-d6a9-44a3-9516-e2c8fd456333",
                             TwoFactorEnabled = false,
                             UserName = "emma_clark"
                         },
@@ -616,7 +581,7 @@ namespace NSSFinalProject12_27.Migrations
                         {
                             Id = "10",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "576775a9-275b-4a36-b31a-930f74613bec",
+                            ConcurrencyStamp = "52df9449-293f-4c57-9d4d-4deaa05f8cb3",
                             Email = "daniel.evans@example.com",
                             EmailConfirmed = true,
                             FirstName = "Daniel",
@@ -624,9 +589,9 @@ namespace NSSFinalProject12_27.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "DANIEL.EVANS@EXAMPLE.COM",
                             NormalizedUserName = "DANIEL_EVANS",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGD7jjopS2HEbQdo+zyh8d9+lkigy5uKCoHEqHNU14GHiiFu1GOTIAMFJb28zmEtzQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOTQYbEiZV4dIajndsGV5r+NCCAEp0OeqWCpsssKZc4k1avizk1wXGlHFMFjMTiusA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "db3784c2-0389-4c52-bc57-cdde7cac3c2d",
+                            SecurityStamp = "71c0b05c-946f-4707-9bba-f7b95b6ddaa8",
                             TwoFactorEnabled = false,
                             UserName = "daniel_evans"
                         });
@@ -648,38 +613,6 @@ namespace NSSFinalProject12_27.Migrations
                     b.HasIndex("RepositoryId");
 
                     b.ToTable("UserRepositories");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "1",
-                            RepositoryId = 1,
-                            SavedAt = new DateTime(2024, 12, 28, 17, 5, 49, 630, DateTimeKind.Utc).AddTicks(7860)
-                        },
-                        new
-                        {
-                            UserId = "2",
-                            RepositoryId = 2,
-                            SavedAt = new DateTime(2024, 12, 28, 17, 5, 49, 630, DateTimeKind.Utc).AddTicks(7860)
-                        },
-                        new
-                        {
-                            UserId = "3",
-                            RepositoryId = 3,
-                            SavedAt = new DateTime(2024, 12, 28, 17, 5, 49, 630, DateTimeKind.Utc).AddTicks(7860)
-                        },
-                        new
-                        {
-                            UserId = "4",
-                            RepositoryId = 4,
-                            SavedAt = new DateTime(2024, 12, 28, 17, 5, 49, 630, DateTimeKind.Utc).AddTicks(7860)
-                        },
-                        new
-                        {
-                            UserId = "5",
-                            RepositoryId = 5,
-                            SavedAt = new DateTime(2024, 12, 28, 17, 5, 49, 630, DateTimeKind.Utc).AddTicks(7860)
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
