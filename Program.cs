@@ -37,8 +37,8 @@ builder.Services.AddIdentityCore<IdentityUser>(options =>
     options.Password.RequireUppercase = false;
     options.User.RequireUniqueEmail = true;
 })
-.AddRoles<IdentityRole>() // Optional if roles are needed
-.AddEntityFrameworkStores<NSSFinalProjectDbContext>(); // Ensure this matches your DbContext class
+.AddEntityFrameworkStores<NSSFinalProjectDbContext>() // Ensure this matches your DbContext class
+.AddDefaultTokenProviders(); // Add default token providers for password reset and more
 
 // Configure the database connection (PostgreSQL in this case)
 builder.Services.AddNpgsql<NSSFinalProjectDbContext>(builder.Configuration["ConnectionStrings:NSSFinalProject12-27Db"]);
@@ -50,9 +50,9 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.Cookie.Name = "NSSFinalProjectCookie";
         options.Cookie.SameSite = SameSiteMode.Strict;
         options.Cookie.HttpOnly = true;
-        options.Cookie.MaxAge = new TimeSpan(7, 0, 0, 0); // 7 days
+         options.Cookie.MaxAge = TimeSpan.FromDays(7);
         options.SlidingExpiration = true;
-        options.ExpireTimeSpan = new TimeSpan(24, 0, 0); // 24 hours
+        options.ExpireTimeSpan = TimeSpan.FromHours(24);
         options.Events.OnRedirectToLogin = (context) =>
         {
             context.Response.StatusCode = StatusCodes.Status401Unauthorized;
