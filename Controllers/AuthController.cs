@@ -9,7 +9,7 @@ using NSSFinalProject.Models.DTOs;
 using System.Security.Claims;
 using System.Text;
 
-namespace NSSFinalProject12_27.Controllers
+namespace NSSFinalProject.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

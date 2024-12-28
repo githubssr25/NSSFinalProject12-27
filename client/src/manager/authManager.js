@@ -1,53 +1,75 @@
-const _apiUrl = "/api/auth";
+const _apiUrl = "http://localhost:5201/api/auth";
 
-export const login = (email, password) => {
-  return fetch(_apiUrl + "/login", {
-    method: "POST",
-    credentials: "same-origin",
-    headers: {
-      Authorization: `Basic ${btoa(`${email}:${password}`)}`,
-    },
-  }).then((res) => {
-    if (res.status !== 200) {
-      return Promise.resolve(null);
-    } else {
-      return tryGetLoggedInUser();
-    }
-  });
-};
-
-export const logout = () => {
-  return fetch(_apiUrl + "/logout");
-};
-
-export const tryGetLoggedInUser = async () => {
+// Login method
+export const login = async (email, password) => {
   try {
-    const response = await fetch("/api/auth/me");
+    const response = await fetch(_apiUrl + "/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      throw new Error(`Login failed: ${response.statusText}`);
     }
 
-    // If the server responds with 204 No Content, just return null
-    if (response.status === 204) {
-      return null;
-    }
-
-    return await response.json();
+    return await response.json(); // Response from the backend (e.g., success message)
   } catch (error) {
-    console.error("Error fetching logged-in user:", error);
-    return null;
+    console.error("Error during login:", error);
+    throw error;
   }
 };
 
+// Logout method
+export const logout = async () => {
+  try {
+    const response = await fetch(_apiUrl + "/logout", { method: "POST" });
 
-export const register = (userProfile) => {
-  userProfile.password = btoa(userProfile.password);
-  return fetch(_apiUrl + "/register", {
-    credentials: "same-origin",
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userProfile),
-  }).then(() => tryGetLoggedInUser());
+    if (!response.ok) {
+      throw new Error(`Logout failed: ${response.statusText}`);
+    }
+
+    return "Logout successful.";
+  } catch (error) {
+    console.error("Error during logout:", error);
+    throw error;
+  }
+};
+
+// Register method
+export const register = async (userProfile) => {
+  try {
+    const response = await fetch(_apiUrl + "/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userProfile),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Registration failed: ${response.statusText}`);
+    }
+
+    return await response.json(); // Response from the backend (e.g., success message)
+  } catch (error) {
+    console.error("Error during registration:", error);
+    throw error;
+  }
+};
+
+// Get User by ID method
+export const getUserById = async (id) => {
+  try {
+    const response = await fetch(`${_apiUrl}/${id}`, {
+      method: "GET",
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch user: ${response.statusText}`);
+    }
+
+    return await response.json(); // User data
+  } catch (error) {
+    console.error("Error fetching user by ID:", error);
+    throw error;
+  }
 };

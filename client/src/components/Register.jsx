@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { register } from "../../manager/authManager";
+import { register } from "../manager/authManager";
 import { Button, FormGroup, Input, Label } from "reactstrap";
 
 const Register = ({ setLoggedInUser }) => {

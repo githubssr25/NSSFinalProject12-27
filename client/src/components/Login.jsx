@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../../manager/authManager";
+import { login } from "../manager/authManager";
 import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
 
-const Login = ({ setLoggedInUser }) => {
+/* eslint-disable react/prop-types */
+export const Login = ({ setLoggedInUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [failedLogin, setFailedLogin] = useState(false);
@@ -45,9 +46,9 @@ const Login = ({ setLoggedInUser }) => {
         <FormFeedback>Login failed.</FormFeedback>
       </FormGroup>
       <Button onClick={handleSubmit}>Login</Button>
-      <p>
+      {/* <p>
         Don't have an account? <Link to="/register">Register</Link>
-      </p>
+      </p> */}
     </div>
   );
 };

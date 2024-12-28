@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { tryGetLoggedInUser } from "./manager/authManager";
+import { getUserById } from "./manager/userManager";
 import { Spinner } from "reactstrap";
 import NavBar from "./components/NavBar";
-import ApplicationViews from "./ApplicationViews";
+import {ApplicationViews} from "./ApplicationViews";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState();
@@ -14,12 +14,18 @@ function App() {
     if (storedUser) {
       setLoggedInUser(JSON.parse(storedUser));
     } else {
-      tryGetLoggedInUser().then((user) => {
-        setLoggedInUser(user);
-        if (user) {
-          localStorage.setItem("loggedInUser", JSON.stringify(user));
-        }
-      });
+      // Replace `tryGetLoggedInUser` with `getUserById` logic
+      const storedUserId = localStorage.getItem("loggedInUserId"); // Store ID separately
+      if (storedUserId) {
+        getUserById(storedUserId).then((user) => {
+          if (user) {
+            localStorage.setItem("loggedInUser", JSON.stringify(user));
+            setLoggedInUser(user);
+          }
+        });
+      } else {
+        setLoggedInUser(null); // No user logged in
+      }
     }
   }, []);
 

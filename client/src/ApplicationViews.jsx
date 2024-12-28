@@ -1,43 +1,47 @@
-
-
-import { useEffect, useState } from "react";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { tryGetLoggedInUser } from "./manager/authManager";
-import { Spinner } from "reactstrap";
-import NavBar from "./components/NavBar";
-import ApplicationViews from "./ApplicationViews";
-
-function App() {
-  const [loggedInUser, setLoggedInUser] = useState();
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("loggedInUser");
-    if (storedUser) {
-      setLoggedInUser(JSON.parse(storedUser));
-    } else {
-      tryGetLoggedInUser().then((user) => {
-        setLoggedInUser(user);
-        if (user) {
-          localStorage.setItem("loggedInUser", JSON.stringify(user));
-        }
-      });
-    }
-  }, []);
-
-  if (loggedInUser === undefined) {
-    return <Spinner />;
-  }
-
-  return (
-    <>
-      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
-      <ApplicationViews
-        loggedInUser={loggedInUser}
-        setLoggedInUser={setLoggedInUser}
+import { Route, Routes } from "react-router-dom";
+import AuthorizedRoute from "./AuthorizedRoute";
+import {Login} from "./components/Login";
+import Register from "./components/Register";
+import Home from "./components/Home";
+import {AllUsers} from "./components/AllUsers"
+/* eslint-disable react/prop-types */
+export const ApplicationViews = ({loggedInUser, setLoggedInUser}) => {
+return (
+  <Routes>
+    <Route path="/">
+      <Route 
+      index
+      element={
+        <AuthorizedRoute loggedInUser={loggedInUser}>
+          <Home />
+        </AuthorizedRoute>
+      }
       />
-    </>
-  );
-}
+         <Route
+          path="login"
+          element={<Login setLoggedInUser={setLoggedInUser} />}
+        />
+        <Route
+          path="register"
+          element={<Register setLoggedInUser={setLoggedInUser} />}
+        />
+      </Route>
 
-export default App;
+      <Route path="users">
+        <Route
+        index
+        element={
+          <AuthorizedRoute loggedInUser={loggedInUser}>
+            <AllUsers loggedInUser={loggedInUser} />
+          </AuthorizedRoute>
+        }
+
+        />
+
+
+      </Route>
+
+  </Routes>
+
+
+)}
