@@ -32,9 +32,11 @@ namespace NSSFinalProject12_27.Context
         optionsBuilder.UseNpgsql(connectionString);
     }
             // Enable detailed logging
-            optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
-
-            optionsBuilder.UseNpgsql(_configuration.GetConnectionString("NSSFinalProject12-27Db"));
+  // Enable detailed logging for debugging purposes
+            optionsBuilder
+                .LogTo(Console.WriteLine, LogLevel.Information) // Logs EF Core commands
+                .EnableSensitiveDataLogging()                  // Logs parameter values (careful with sensitive data!)
+                .EnableDetailedErrors();                      // Provides detailed error messages
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -58,141 +60,141 @@ namespace NSSFinalProject12_27.Context
  var hasher = new PasswordHasher<User>();
 
     // Seed Users
-//     modelBuilder.Entity<User>().HasData(
-//         new User
-//         {
-//             Id = "1",
-//             UserName = "john_doe",
-//             Email = "john.doe@example.com",
-//             NormalizedUserName = "JOHN_DOE",
-//             NormalizedEmail = "JOHN.DOE@EXAMPLE.COM",
-//             FirstName = "John",
-//             LastName = "Doe",
-//             EmailConfirmed = true,
-//             PasswordHash = hasher.HashPassword(null, "Password123!")
-//         },
-//         new User
-//         {
-//             Id = "2",
-//             UserName = "jane_smith",
-//             Email = "jane.smith@example.com",
-//             NormalizedUserName = "JANE_SMITH",
-//             NormalizedEmail = "JANE.SMITH@EXAMPLE.COM",
-//             FirstName = "Jane",
-//             LastName = "Smith",
-//             EmailConfirmed = true,
-//             PasswordHash = hasher.HashPassword(null, "Password123!")
-//         },
-//         new User
-//         {
-//             Id = "3",
-//             UserName = "alice_brown",
-//             Email = "alice.brown@example.com",
-//             NormalizedUserName = "ALICE_BROWN",
-//             NormalizedEmail = "ALICE.BROWN@EXAMPLE.COM",
-//             FirstName = "Alice",
-//             LastName = "Brown",
-//             EmailConfirmed = true,
-//             PasswordHash = hasher.HashPassword(null, "Password123!")
-//         },
-//         new User
-//         {
-//             Id = "4",
-//             UserName = "bob_jones",
-//             Email = "bob.jones@example.com",
-//             NormalizedUserName = "BOB_JONES",
-//             NormalizedEmail = "BOB.JONES@EXAMPLE.COM",
-//             FirstName = "Bob",
-//             LastName = "Jones",
-//             EmailConfirmed = true,
-//             PasswordHash = hasher.HashPassword(null, "Password123!")
-//         },
-//         new User
-//         {
-//             Id = "5",
-//             UserName = "carla_white",
-//             Email = "carla.white@example.com",
-//             NormalizedUserName = "CARLA_WHITE",
-//             NormalizedEmail = "CARLA.WHITE@EXAMPLE.COM",
-//             FirstName = "Carla",
-//             LastName = "White",
-//             EmailConfirmed = true,
-//             PasswordHash = hasher.HashPassword(null, "Password123!")
-//         },
-//         new User
-//         {
-//             Id = "6",
-//             UserName = "michael_green",
-//             Email = "michael.green@example.com",
-//             NormalizedUserName = "MICHAEL_GREEN",
-//             NormalizedEmail = "MICHAEL.GREEN@EXAMPLE.COM",
-//             FirstName = "Michael",
-//             LastName = "Green",
-//             EmailConfirmed = true,
-//             PasswordHash = hasher.HashPassword(null, "Password123!")
-//         },
-//         new User
-//         {
-//             Id = "7",
-//             UserName = "linda_lee",
-//             Email = "linda.lee@example.com",
-//             NormalizedUserName = "LINDA_LEE",
-//             NormalizedEmail = "LINDA.LEE@EXAMPLE.COM",
-//             FirstName = "Linda",
-//             LastName = "Lee",
-//             EmailConfirmed = true,
-//             PasswordHash = hasher.HashPassword(null, "Password123!")
-//         },
-//         new User
-//         {
-//             Id = "8",
-//             UserName = "james_brown",
-//             Email = "james.brown@example.com",
-//             NormalizedUserName = "JAMES_BROWN",
-//             NormalizedEmail = "JAMES.BROWN@EXAMPLE.COM",
-//             FirstName = "James",
-//             LastName = "Brown",
-//             EmailConfirmed = true,
-//             PasswordHash = hasher.HashPassword(null, "Password123!")
-//         },
-//         new User
-//         {
-//             Id = "9",
-//             UserName = "emma_clark",
-//             Email = "emma.clark@example.com",
-//             NormalizedUserName = "EMMA_CLARK",
-//             NormalizedEmail = "EMMA.CLARK@EXAMPLE.COM",
-//             FirstName = "Emma",
-//             LastName = "Clark",
-//             EmailConfirmed = true,
-//             PasswordHash = hasher.HashPassword(null, "Password123!")
-//         },
-//         new User
-//         {
-//             Id = "10",
-//             UserName = "daniel_evans",
-//             Email = "daniel.evans@example.com",
-//             NormalizedUserName = "DANIEL_EVANS",
-//             NormalizedEmail = "DANIEL.EVANS@EXAMPLE.COM",
-//             FirstName = "Daniel",
-//             LastName = "Evans",
-//             EmailConfirmed = true,
-//             PasswordHash = hasher.HashPassword(null, "Password123!")
-//         }
-//     );
+    modelBuilder.Entity<User>().HasData(
+        new User
+        {
+            Id = "1",
+            UserName = "john_doe",
+            Email = "john.doe@example.com",
+            NormalizedUserName = "JOHN_DOE",
+            NormalizedEmail = "JOHN.DOE@EXAMPLE.COM",
+            FirstName = "John",
+            LastName = "Doe",
+            EmailConfirmed = true,
+            PasswordHash = hasher.HashPassword(null, "Password123!")
+        },
+        new User
+        {
+            Id = "2",
+            UserName = "jane_smith",
+            Email = "jane.smith@example.com",
+            NormalizedUserName = "JANE_SMITH",
+            NormalizedEmail = "JANE.SMITH@EXAMPLE.COM",
+            FirstName = "Jane",
+            LastName = "Smith",
+            EmailConfirmed = true,
+            PasswordHash = hasher.HashPassword(null, "Password123!")
+        },
+        new User
+        {
+            Id = "3",
+            UserName = "alice_brown",
+            Email = "alice.brown@example.com",
+            NormalizedUserName = "ALICE_BROWN",
+            NormalizedEmail = "ALICE.BROWN@EXAMPLE.COM",
+            FirstName = "Alice",
+            LastName = "Brown",
+            EmailConfirmed = true,
+            PasswordHash = hasher.HashPassword(null, "Password123!")
+        },
+        new User
+        {
+            Id = "4",
+            UserName = "bob_jones",
+            Email = "bob.jones@example.com",
+            NormalizedUserName = "BOB_JONES",
+            NormalizedEmail = "BOB.JONES@EXAMPLE.COM",
+            FirstName = "Bob",
+            LastName = "Jones",
+            EmailConfirmed = true,
+            PasswordHash = hasher.HashPassword(null, "Password123!")
+        },
+        new User
+        {
+            Id = "5",
+            UserName = "carla_white",
+            Email = "carla.white@example.com",
+            NormalizedUserName = "CARLA_WHITE",
+            NormalizedEmail = "CARLA.WHITE@EXAMPLE.COM",
+            FirstName = "Carla",
+            LastName = "White",
+            EmailConfirmed = true,
+            PasswordHash = hasher.HashPassword(null, "Password123!")
+        },
+        new User
+        {
+            Id = "6",
+            UserName = "michael_green",
+            Email = "michael.green@example.com",
+            NormalizedUserName = "MICHAEL_GREEN",
+            NormalizedEmail = "MICHAEL.GREEN@EXAMPLE.COM",
+            FirstName = "Michael",
+            LastName = "Green",
+            EmailConfirmed = true,
+            PasswordHash = hasher.HashPassword(null, "Password123!")
+        },
+        new User
+        {
+            Id = "7",
+            UserName = "linda_lee",
+            Email = "linda.lee@example.com",
+            NormalizedUserName = "LINDA_LEE",
+            NormalizedEmail = "LINDA.LEE@EXAMPLE.COM",
+            FirstName = "Linda",
+            LastName = "Lee",
+            EmailConfirmed = true,
+            PasswordHash = hasher.HashPassword(null, "Password123!")
+        },
+        new User
+        {
+            Id = "8",
+            UserName = "james_brown",
+            Email = "james.brown@example.com",
+            NormalizedUserName = "JAMES_BROWN",
+            NormalizedEmail = "JAMES.BROWN@EXAMPLE.COM",
+            FirstName = "James",
+            LastName = "Brown",
+            EmailConfirmed = true,
+            PasswordHash = hasher.HashPassword(null, "Password123!")
+        },
+        new User
+        {
+            Id = "9",
+            UserName = "emma_clark",
+            Email = "emma.clark@example.com",
+            NormalizedUserName = "EMMA_CLARK",
+            NormalizedEmail = "EMMA.CLARK@EXAMPLE.COM",
+            FirstName = "Emma",
+            LastName = "Clark",
+            EmailConfirmed = true,
+            PasswordHash = hasher.HashPassword(null, "Password123!")
+        },
+        new User
+        {
+            Id = "10",
+            UserName = "daniel_evans",
+            Email = "daniel.evans@example.com",
+            NormalizedUserName = "DANIEL_EVANS",
+            NormalizedEmail = "DANIEL.EVANS@EXAMPLE.COM",
+            FirstName = "Daniel",
+            LastName = "Evans",
+            EmailConfirmed = true,
+            PasswordHash = hasher.HashPassword(null, "Password123!")
+        }
+    );
 
 //     // Seed Categories
-//     modelBuilder.Entity<Category>().HasData(
-//         new Category { CategoryId = 1, Description = "Backend" },
-//         new Category { CategoryId = 2, Description = "Frontend" },
-//         new Category { CategoryId = 3, Description = "Artificial Intelligence" },
-//         new Category { CategoryId = 4, Description = "Full Stack" },
-//         new Category { CategoryId = 5, Description = "Data Science" },
-//         new Category { CategoryId = 6, Description = "Security" },
-//         new Category { CategoryId = 7, Description = "Testing" },
-//         new Category { CategoryId = 8, Description = "Machine Learning" },
-//         new Category { CategoryId = 9, Description = "Other" }
-//     );
+    modelBuilder.Entity<Category>().HasData(
+        new Category { CategoryId = 1, Description = "Backend" },
+        new Category { CategoryId = 2, Description = "Frontend" },
+        new Category { CategoryId = 3, Description = "Artificial Intelligence" },
+        new Category { CategoryId = 4, Description = "Full Stack" },
+        new Category { CategoryId = 5, Description = "Data Science" },
+        new Category { CategoryId = 6, Description = "Security" },
+        new Category { CategoryId = 7, Description = "Testing" },
+        new Category { CategoryId = 8, Description = "Machine Learning" },
+        new Category { CategoryId = 9, Description = "Other" }
+    );
 
 //     // Seed Repositories
 //     modelBuilder.Entity<Repository>().HasData(
@@ -326,6 +328,12 @@ modelBuilder.Entity<Annotation>()
     .WithMany(r => r.Annotations)
     .HasForeignKey(a => a.RepositoryId)
     .OnDelete(DeleteBehavior.Cascade);
+
+
+    //  // Temporarily disable validation
+    // modelBuilder.Entity<User>().Ignore(user => user.ConcurrencyStamp);
+    // modelBuilder.Entity<User>().Ignore(user => user.SecurityStamp);
+
 
 
 
