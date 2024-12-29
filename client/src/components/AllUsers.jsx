@@ -11,6 +11,7 @@ export const AllUsers = () => {
     const fetchUsers = async () => {
       try {
         const data = await getAllUsers();
+        console.log("structureo f users data in all users", data);
         setUsers(data);
       } catch (err) {
         console.error("Error fetching users:", err);
