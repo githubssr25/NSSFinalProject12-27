@@ -54,3 +54,44 @@ export const getAnnotationsByUser = async (userId) => {
     throw error;
   }
 };
+
+
+
+export const createNewRepository = async (createRepositoryDto) => {
+try {
+  // Ensure userId is converted to an integer
+  const response = await fetch(`${BASE_URL}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(createRepositoryDto),
+  });
+
+  return await response.json();
+} catch (error) {
+  console.error("Error creating/associating repository", error);
+}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
