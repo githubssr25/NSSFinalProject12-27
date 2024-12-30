@@ -7,6 +7,8 @@ import {AllUsers} from "./components/AllUsers"
 import {AllRepositories} from "./components/AllRepositories";
 import {AllAnnotations} from "./components/AllAnnotations";
 import {CreateRepository} from "./components/CreateRepository";
+import {EditAnnotation} from "./components/EditAnnotation";
+import {DeleteAnnotation} from "./components/DeleteAnnotation";
 
 /* eslint-disable react/prop-types */
 export const ApplicationViews = ({loggedInUser, setLoggedInUser}) => {
@@ -69,6 +71,22 @@ return (
             <AllAnnotations loggedInUser={loggedInUser} />
           </AuthorizedRoute>
         }
+      />
+      <Route 
+      path="edit/:annotationId"
+      element={
+        <AuthorizedRoute loggedInUser={loggedInUser}>
+          <EditAnnotation loggedInUser={loggedInUser} />
+        </AuthorizedRoute>
+      }
+      />
+      <Route 
+      path="delete/:annotationId"
+      element={
+        <AuthorizedRoute loggedInUser={loggedInUser}>
+          <DeleteAnnotation loggedInUser={loggedInUser}/>
+        </AuthorizedRoute>
+      }
       />
     </Route>
   </Routes>

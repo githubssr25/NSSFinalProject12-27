@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
-import { getAnnotationsByUser } from "../manager/repositoryManager";
+import { getAnnotationsByUser } from "../manager/annotationsManager";
+import { Link } from "react-router-dom";
 
 export const AllAnnotations = ({ loggedInUser }) => {
   const [annotations, setAnnotations] = useState([]);
@@ -18,7 +19,6 @@ export const AllAnnotations = ({ loggedInUser }) => {
         });
     }
   }, [loggedInUser]);
-  
 
   return (
     <div className="container">
@@ -26,15 +26,32 @@ export const AllAnnotations = ({ loggedInUser }) => {
       {annotations.map((annotation) => (
         <div key={annotation.annotationId} className="card my-2">
           <div className="card-body">
-          <h5 className="card-title"> Repository Name {annotation.repositoryName}</h5>
-            <h5 className="card-title"> Category {annotation.category.description}</h5>
-            <p className="card-text"> Description{annotation.description}</p>
-            <p className="card-text"> Repository URL{annotation.repositoryUrl}</p>
-            <p className="card-text"> Stars{annotation.stars}</p>
+            <h5 className="card-title">
+              Repository Name: {annotation.repositoryName}
+            </h5>
             <p className="card-text">
-              <small className="text-muted">Created At: {annotation.CreatedAt}</small>
+              Annotation Id: {annotation.annotationId}
+            </p>
+            <p className="card-text">Content: {annotation.content}</p>
+            <p className="card-text">Type: {annotation.type}</p>
+            <p className="card-text">
+              <small className="text-muted">
+                Created At: {new Date(annotation.createdAt).toLocaleString()}
+              </small>
             </p>
           </div>
+          <Link
+            to={`/annotations/edit/${annotation.annotationId}`}
+            className="btn btn-primary mx-2"
+          >
+            Edit
+          </Link>
+          <Link
+            to={`/annotations/delete/${annotation.annotationId}`}
+            className="btn btn-danger mx-2"
+          >
+            Delete
+          </Link>
         </div>
       ))}
     </div>

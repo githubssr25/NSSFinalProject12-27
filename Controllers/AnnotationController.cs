@@ -56,6 +56,29 @@ namespace NSSFinalProject12_27.Controllers
             return Ok(annotations);
         }
 
+        [HttpGet("{annotationId}")]
+        public IActionResult GetAnnotationById(int annotationId)
+        {
+            var annotation = _dbContext.Annotations
+            .Where(a => a.AnnotationId == annotationId)
+            .Select(a => new AnnotationDTO
+            {
+                AnnotationId = a.AnnotationId,
+                RepositoryId = a.RepositoryId,
+                RepositoryName = _dbContext.Repositories.Where(eachRepo => eachRepo.RepositoryId == a.RepositoryId).Select(repo => repo.RepositoryName).FirstOrDefault(),
+                Type = a.Type,
+                Content = a.Content,
+                CreatedAt = a.CreatedAt
+            }).FirstOrDefault();
+
+            if (annotation == null)
+            {
+                return NotFound($"Annotation with ID {annotationId} not found.");
+            }
+
+            return Ok(annotation);
+        }
+
     }
 
 }
