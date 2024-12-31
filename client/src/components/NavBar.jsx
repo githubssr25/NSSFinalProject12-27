@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-const NavBar = ({ loggedInUser, setLoggedInUser }) => {
+/* eslint-disable react/prop-types */
+export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
   const handleLogout = () => {
     localStorage.removeItem("loggedInUser");
     setLoggedInUser(null);
@@ -10,7 +11,10 @@ const NavBar = ({ loggedInUser, setLoggedInUser }) => {
     <nav>
       {loggedInUser ? (
         <>
-          <Link to="/">Blank Link of /</Link>
+            <Link to="/">Home</Link>
+          <Link to="/users">Users</Link>
+          <Link to="/repositories">Repositories</Link>
+          <Link to="/annotations">Annotations</Link>
           <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
@@ -22,5 +26,3 @@ const NavBar = ({ loggedInUser, setLoggedInUser }) => {
     </nav>
   );
 };
-
-export default NavBar;

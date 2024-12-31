@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NSSFinalProject12_27.Context;
 using NSSFinalProject.Models.DTOs;
+using NSSFinalProject.Models;
 
 namespace NSSFinalProject12_27.Controllers
 {
@@ -78,6 +79,57 @@ namespace NSSFinalProject12_27.Controllers
 
             return Ok(annotation);
         }
+
+        [HttpPut("{annotationId}")]
+        public IActionResult UpdateAnnotation(int annotationId, UpdateAnnotationDTO annotationDTO)
+        {
+
+            var annotation = _dbContext.Annotations.FirstOrDefault(a => a.AnnotationId == annotationId);
+
+            if (annotation == null)
+            {
+                return NotFound("Annotation not found.");
+            }
+
+            annotation.RepositoryId = annotationDTO.RepositoryId;
+            annotation.Type = annotationDTO.Type;
+            annotation.Content = annotationDTO.Content;
+
+            _dbContext.SaveChanges();
+
+            return Ok(annotation);
+        }
+
+        [HttpPost]
+public IActionResult CreateAnnotation([FromBody] CreateAnnotationDTO createAnnotationDTO)
+{
+    // Check if the repository exists
+    var repository = _dbContext.Repositories.FirstOrDefault(r => r.RepositoryId == createAnnotationDTO.RepositoryId);
+    if (repository == null)
+    {
+        return NotFound("Repository not found.");
+    }
+
+    // Create a new Annotation
+    var annotation = new Annotation
+    {
+        RepositoryId = createAnnotationDTO.RepositoryId,
+        UserId = createAnnotationDTO.UserId,
+        Type = createAnnotationDTO.Type,
+        Content = createAnnotationDTO.Content,
+        CreatedAt = DateTime.UtcNow
+    };
+
+    _dbContext.Annotations.Add(annotation);
+    _dbContext.SaveChanges();
+
+    return Ok(annotation);
+}
+
+
+
+
+
 
     }
 

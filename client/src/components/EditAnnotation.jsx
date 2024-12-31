@@ -9,12 +9,13 @@ export const EditAnnotation = ({ loggedInUser }) => {
 
     const { annotationId } = useParams();
     const navigate = useNavigate();
-  
-    const [annotation, setAnnotation] = useState(null);
+    const types = [ "Note", "Tag"];
+    // const [annotations, setAnnotation] = useState(null);
     const [repositories, setRepositories] = useState([]);
     const [formData, setFormData] = useState({
         content: "",
         repositoryId: null,
+        type: ""
       });
     
       useEffect(() => {
@@ -22,7 +23,7 @@ export const EditAnnotation = ({ loggedInUser }) => {
         getAnnotationById(annotationId)
           .then((data) => {
             setAnnotation(data);
-            setFormData({ content: data.content, repositoryId: data.repositoryId });
+            setFormData({ content: data.content, repositoryId: data.repositoryId, type: data.type});
           })
           .catch((error) => console.error("Error fetching annotation:", error));
     
@@ -33,23 +34,42 @@ export const EditAnnotation = ({ loggedInUser }) => {
       }, [annotationId, loggedInUser.id]);
 
 
-
 const handleInputChange = (e) => {
+const {name, value} = e.target;
 
-
-
-
+setFormData((form) => ({
+  ...form,
+  [name] : value,
+}))
 };
+
 
 const handleSubmit = async (e) => {
+e.prevent.default();
 
-
-
+const updatedAnnotationDTO = {
+  AnnotationId : annotationId,
+  RepositoryId: formData.repositoryId,
+  Type: formData.type,
+  Content: formData.content
 };
 
+const response = editAnnotation(annotationId, updatedAnnotationDTO);
 
+console.log("our response", response);
 
+if(response){
 
+  setFormData({
+     content: "",
+     repositoryId: null,
+     type: ""
+  });
+
+  navigate("/annotations"); // Redirect after saving changes
+}
+
+};
 
 
       return (
@@ -83,6 +103,27 @@ const handleSubmit = async (e) => {
                     {repo.repositoryName}
                   </option>
                 ))}
+              </select>
+            </div>
+            <div className="form-group">
+              <label htmlFor="type"> Select Type</label>
+              <select 
+              id="type"
+              name="type"
+              value={formData.type}
+              onChange={handleInputChange}
+              className="form-control"
+              required
+              >
+              <option value= "" disabled>
+                Select A Type
+              </option>
+              {types.map((type, index) => (
+                <option key={index} value={type}>
+                  {type}
+                </option>
+
+              ))}
               </select>
             </div>
             <button type="submit" className="btn btn-primary mt-3">

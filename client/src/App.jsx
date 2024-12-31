@@ -3,7 +3,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { getUserById } from "./manager/userManager";
 import { Spinner } from "reactstrap";
-import NavBar from "./components/NavBar";
+// import {NavBar} from "./components/NavBar";
 import {ApplicationViews} from "./ApplicationViews";
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <>
-      <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} />
+      {/* <NavBar loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} /> */}
       <ApplicationViews
         loggedInUser={loggedInUser}
         setLoggedInUser={setLoggedInUser}
