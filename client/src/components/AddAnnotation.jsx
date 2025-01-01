@@ -14,7 +14,10 @@ export const AddAnnotation = ({loggedInUser}) => {
 
 useEffect(() => {
     getRepositoriesByUserId(loggedInUser.id)
-    .then(setRepositories)
+    .then((data) => {
+        console.log("Fetched repositories:", data); 
+            setRepositories(data);
+    })
     .catch((error) => console.error("error fetching repositories:", error));
 }, [loggedInUser.id])
 
@@ -33,11 +36,14 @@ const handleSubmit = async (e) => {
 e.preventDefault();
 
 const createAnnotationDTO = {
-    RepositoryId : formData.repositoryId,
-    UserId : loggedInUser.id,
+    RepositoryId : parseInt(formData.repositoryId, 10),
+    UserId : String(loggedInUser.id),
     Type : formData.type,
     Content: formData.content
 };
+
+console.log("Payload sent to server:", createAnnotationDTO);
+
 
 const response = await createAnnotation(createAnnotationDTO);
 
@@ -72,7 +78,7 @@ return (
                 </option>
                 {repositories.map((eachRepo, index) => (
                     <option key={index} value={eachRepo.repositoryId} >
-                      Repository Name: {eachRepo.RepositoryName}
+                      Repository Name: {eachRepo.repositoryName}
                     </option>
                 ))}
             </select>
@@ -90,12 +96,12 @@ return (
             <option> 
                 Choose Either Note Or Tag 
             </option>
-            {types.map((eachType, index) => {
+            {types.map((eachType, index) => (
                 <option key={index} value={eachType}>
                     {eachType}
                 </option>
 
-            })}
+            ))}
         </select>
         </div>
         <div className="form-group">
@@ -108,6 +114,9 @@ return (
             required
             />
         </div>
+        <button type="submit" className="btn-add-annotation">
+            Click to Add Annotation
+        </button>
     </form>
 </div>
 
