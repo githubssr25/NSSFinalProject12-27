@@ -12,6 +12,7 @@ export const EditAnnotation = ({ loggedInUser }) => {
     const types = [ "Note", "Tag"];
     // const [annotations, setAnnotation] = useState(null);
     const [repositories, setRepositories] = useState([]);
+    const [annotation, setAnnotation] = useState(null); // debateable if needed 12-31 354
     const [formData, setFormData] = useState({
         content: "",
         repositoryId: null,
@@ -45,7 +46,7 @@ setFormData((form) => ({
 
 
 const handleSubmit = async (e) => {
-e.prevent.default();
+e.preventDefault();
 
 const updatedAnnotationDTO = {
   AnnotationId : annotationId,
@@ -53,8 +54,9 @@ const updatedAnnotationDTO = {
   Type: formData.type,
   Content: formData.content
 };
+console.log("are we even reaching this in hamdleSubmit");
 
-const response = editAnnotation(annotationId, updatedAnnotationDTO);
+const response = await editAnnotation(annotationId, updatedAnnotationDTO);
 
 console.log("our response", response);
 

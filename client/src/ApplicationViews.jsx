@@ -47,7 +47,12 @@ A route with path="/" is the parent route. All other routes nested inside it (de
  
  
   {/* Index Route */}
-  <Route index element={ <> {console.log("Rendering Home")} <Home /> </> } />
+  <Route index element={ 
+    <> 
+    { /*{console.log("Rendering Home")} */}
+     <Home /> 
+     </> } 
+     />
 
    {/* Users Group */}
    <Route path="users">
@@ -55,7 +60,7 @@ A route with path="/" is the parent route. All other routes nested inside it (de
             index
             element={
               <>
-                {console.log("Rendering Users")}
+              {/*  {console.log("Rendering Users")}  */}
                 <AllUsers loggedInUser={loggedInUser} />
               </>
             }
