@@ -1,0 +1,75 @@
+/* NavBar Styling */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between items */
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar-links li {
+    margin: 0;
+  }
+  
+  .navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+  }
+  
+  .navbar-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Logout button */
+  .logout-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .logout-button:hover {
+    background-color: #d90000;
+  }
+  
+  /* Mobile-friendly adjustments */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: stretch; /* Full-width alignment */
+      width: 50%; /* Ensures the navbar spans the full width */
+      padding: 2px;
+    }
+  
+    .navbar-links {
+      flex-direction: column;
+      gap: 10px; /* Smaller gap for stacked items */
+      padding: 6px;
+    }
+  
+    .navbar-links a {
+      text-align: center;
+      font-size: 14px;
+      padding: 5 px;
+    }
+  
+    .logout-button {
+      margin-top: 10px;
+      align-self: center;
+    }
+  }
+  
