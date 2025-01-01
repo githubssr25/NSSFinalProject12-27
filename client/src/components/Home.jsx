@@ -1,29 +1,25 @@
-
+import "./Home.css"; // Import the custom CSS file
 
 export const Home = () => {
   const githubSearchUrl =
   "https://github.com/search?q=language:javascript+stars:>100+pushed:>2023-01-01";
   const searchUrl = "https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax";
 
-return (
-  <div className="container text-center">
-    <h1>Welcome to NSS Final Project</h1>
+  return (
+    <div className="home-container">
+      <h1 className="home-title">Welcome to NSS Final Project</h1>
 
-    
-
-    <p> For Some Info On Search Tips  </p>
+      <p className="home-paragraph">For Some Info On Search Tips</p>
       <a
         href={searchUrl}
         target="_blank"
-        className="btn btn-primary my-2"
+        className="btn btn-primary home-link"
+        rel="noopener noreferrer"
       >
-        Click Here For Search Tips 
+        Click Here For Search Tips
       </a>
 
-
-
-
-    <p>Search for open source projects on GitHub to contribute to.</p>
+      <p className="home-paragraph">Search for open source projects on GitHub to contribute to.</p>
     <a
       href={githubSearchUrl}
       target="_blank"

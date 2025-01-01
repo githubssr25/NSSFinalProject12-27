@@ -1,0 +1,49 @@
+/* Mobile-friendly adjustments */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 10px;
+    text-align: center;
+    width: 80%; /* Ensure it spans the full width */
+    box-sizing: border-box; /* Include padding in the width calculation */
+  }
+
+  .home-title {
+    font-size: 22px; /* Slightly smaller for better scaling */
+    margin-bottom: 20px; /* Add space below the title */
+  }
+
+  .home-paragraph {
+    font-size: 16px; /* Keep text readable */
+    margin: 15px 0; /* Add consistent spacing between elements */
+    width: 80%; /* Reduce width for better readability */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home-link {
+    display: block; /* Stack links vertically */
+    margin: 15px auto; /* Center the buttons */
+    width: 80%; /* Keep buttons within the screen */
+    font-size: 14px; /* Adjust font size */
+    padding: 12px; /* Add touch-friendly padding */
+    box-sizing: border-box; /* Ensure padding doesn't increase width */
+  }
+
+  .home-card {
+    margin: 15px auto; /* Center the card */
+    padding: 15px; /* Add padding inside the card */
+    width: 80%; /* Ensure the card is not too wide */
+    box-sizing: border-box;
+  }
+
+  .home-card ul {
+    padding: 0; /* Remove extra padding */
+    margin: 10px auto; /* Center the list */
+    width: 80%; /* Adjust width for smaller screens */
+    list-style-type: none; /* Remove bullet points */
+  }
+
+  .home-card ul li {
+    margin: 8px 0; /* Add spacing between list items */
+  }
+}
