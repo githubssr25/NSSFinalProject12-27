@@ -1,0 +1,29 @@
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    .user-list {
+      padding: 0; /* Remove extra padding */
+      margin: 0 auto; /* Keep centered within its container */
+      text-align: left; /* Align the list items to the left */
+    }
+  
+    .user-list li {
+      font-size: 14px; /* Adjust font size for mobile */
+      line-height: 1.5; /* Improve readability */
+      padding: 10px; /* Add spacing around items */
+      margin-bottom: 10px; /* Add space between list items */
+      border-bottom: 1px solid #ddd; /* Add a line to separate items */
+      width: 80%
+    }
+  
+    .all-users {
+      width: 95%; /* Maintain 50% width */
+      padding: 10px; /* Add some padding */
+      margin-right: 10%; /* Center the container while maintaining left alignment */
+    }
+  }
+  .users-header {
+    width: 80%;
+    padding: 5px;
+    margin-right: 10%;
+  }
+  

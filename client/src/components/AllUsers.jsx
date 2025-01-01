@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllUsers } from "../manager/UserManager"; // Import your UserManager method
-
+import "./AllUsers.css";
 
 export const AllUsers = () => {
 
@@ -23,12 +23,12 @@ export const AllUsers = () => {
 
 
   return (
-    <div>
-      <h2>All Users</h2>
+    <div className="all-users">
+      <h2 className="users-header">All Users</h2>
       {users.length === 0 ? (
         <p>No users found.</p>
       ) : (
-        <ul>
+        <ul className="user-list">
           {users.map((user) => (
             <li key={user.id}>
               <strong>{user.userName}</strong> ({user.email})<br />

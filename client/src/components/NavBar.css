@@ -1,11 +1,12 @@
 /* NavBar Styling */
 .navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 0; /* Remove extra horizontal padding */
+  width: 60%; /* Ensure the navbar spans the entire screen width */
+}
   
   .navbar-links {
     list-style: none;
@@ -51,7 +52,7 @@
     .navbar {
       flex-direction: column;
       align-items: stretch; /* Full-width alignment */
-      width: 50%; /* Ensures the navbar spans the full width */
+      width: 60%; /* Ensures the navbar spans the full width */
       padding: 2px;
     }
   
