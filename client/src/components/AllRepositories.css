@@ -1,0 +1,43 @@
+/* Mobile-Specific Adjustments */
+@media (max-width: 768px) {
+  /* Container styling for proper alignment */
+  div {
+    padding: 5px; /* Ensure padding fits smaller screens */
+    margin: 0 auto; /* Center the content */
+    box-sizing: border-box; /* Include padding in width */
+  }
+
+  /* Heading adjustments */
+  h2 {
+    font-size: 20px; /* Reduce font size for smaller screens */
+    text-align: center; /* Center the heading */
+    margin-bottom: 15px; /* Add spacing below heading */
+  }
+
+  /* List styling */
+  ul {
+    
+    padding: 0; /* Remove default padding */
+    margin: 0 auto; /* Center the list */
+    list-style: none; /* Remove bullet points */
+    text-align: left; /* Align list items to the left */
+    width: 80%; /* Restrict list width */
+  }
+
+  /* List item styling */
+  li {
+    margin-right: 20px; /* Add left margin to shift cards */
+    font-size: 14px; /* Adjust font size for better readability */
+    line-height: 1.5; /* Improve spacing between lines */
+    margin-bottom: 15px; /* Add space between items */
+    padding: 10px; /* Add padding for touch-friendly interaction */
+    border-bottom: 1px solid #ddd; /* Add a bottom border for separation */
+  }
+
+  /* Paragraphs inside the list */
+  p {
+    font-size: 13px; /* Slightly smaller text for descriptions */
+    margin: 5px 0; /* Add spacing between paragraphs */
+  }
+}
+

@@ -1,0 +1,41 @@
+@media (max-width: 768px) {
+    /* Adjust container */
+    .container {
+      padding: 10px; /* Add space within the container */
+      width: 80%; /* Constrain width for smaller screens */
+      margin: 0 auto; /* Center the container */
+      text-align: left; /* Ensure alignment */
+    
+    }
+  
+    /* Adjust row layout */
+    .row {
+      justify-content: center; /* Center align the cards */
+      text-align: left; /* Align content to the left */
+      margin: 0 auto; /* Prevent horizontal overflow */
+      width: 100%;
+    }
+  
+    /* Adjust card styles */
+    .card {
+      margin-right: 20px; /* Add left margin to shift cards */
+      margin-bottom: 15px; /* Add spacing between cards */
+      padding: 5px; /* Add internal spacing */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow for better look */
+    }
+  
+    /* Adjust card text */
+    .card-body {
+      font-size: 14px; /* Smaller text size for readability */
+      padding: 5px; /* Internal spacing */
+    }
+  
+  
+    /* Adjust heading */
+    .text-center {
+      font-size: 18px; /* Smaller heading for mobile */
+      margin-bottom: 15px; /* Add space below heading */
+    }
+  }
+  
+  

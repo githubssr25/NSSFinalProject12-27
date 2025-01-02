@@ -1,3 +1,21 @@
+.user-list {
+    padding: 0; /* Remove unnecessary padding */
+    margin: 0 auto; /* Center the list */
+    list-style: disc; /* Use default disc bullet points */
+    width: 80%; /* Adjust the width to make it more centered */
+    text-align: left; /* Ensure text aligns nicely */
+  }
+  
+  .user-list li {
+    font-size: 14px; /* Keep text readable */
+    line-height: 1.5; /* Improve readability */
+    padding: 5px 0; /* Adjust padding to reduce spacing */
+    margin-bottom: 5px; /* Reduce space between list items */
+    border-bottom: 1px solid #ddd; /* Separate items visually */
+    list-style-position: inside; /* Move bullet point closer to the text */
+  }
+
+
 /* Mobile-specific adjustments */
 @media (max-width: 768px) {
     .user-list {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllRepositories } from "../manager/repositoryManager";
+import "./AllRepositories.css";
 
 export const AllRepositories = ({loggedInUser, setLoggedInUser}) => {
   const [repositories, setRepositories] = useState([]);
