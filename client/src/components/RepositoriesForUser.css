@@ -1,0 +1,68 @@
+/* Adjust the heading for better alignment */
+div {
+  padding: 20px;
+  width: 90%; /* Constrain the container width */
+  text-align: left; /* Align content to the left */
+}
+
+  /* Shared styling for all list items */
+li,
+.repositories-list li {
+  margin-bottom: 15px; /* Add spacing between items */
+  padding: 15px; /* Add internal padding for each item */
+  text-align: left; /* Ensure text aligns properly */
+}
+
+
+ 
+@media (max-width: 768px) {
+    .container {
+      padding: 10px;
+      width: 65%;
+      margin: 0 auto;
+      text-align: left;
+      transform: translateX(-20%);
+    }
+  
+    h2 {
+      font-size: 18px;
+      text-align: left;
+      margin-bottom: 15px;
+    }
+  
+/* Style the list container */
+ul {
+    padding: 0;
+    margin: 0 auto; /* Center the list within the container */
+    list-style: none; /* Remove bullet points */
+    width: 100%; /* Ensure it takes up the container's width */
+  }
+  
+  /* Style individual list items */
+  li {
+    margin-bottom: 15px; /* Add spacing between items */
+    padding: 15px; /* Add internal padding for each item */
+    border: 1px solid #ddd; /* Border for visual separation */
+    border-radius: 5px; /* Rounded corners */
+    text-align: left; /* Ensure text aligns properly */
+    width: 75%; /* Restrict the width of each box */
+    margin: 0 auto; /* Center each box within the ul */
+  }
+  
+    p {
+      font-size: 13px;
+      margin: 5px 0;
+    }
+  
+    a {
+      font-size: 14px;
+      text-decoration: none;
+      color: blue;
+    }
+  
+    .category-text {
+      font-size: 13px;
+      color: gray;
+    }
+  }
+  

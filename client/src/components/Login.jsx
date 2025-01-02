@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../manager/authManager";
 import { Button, FormFeedback, FormGroup, Input, Label } from "reactstrap";
-
+import "./Login.css";
 /* eslint-disable react/prop-types */
 export const Login = ({ setLoggedInUser }) => {
   const [email, setEmail] = useState("");

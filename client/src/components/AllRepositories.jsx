@@ -24,9 +24,9 @@ useEffect(() => {
   
 
   return (
-    <div>
+    <div className="repositories-container">
       <h2>All Repositories</h2>
-      <ul>
+      <ul className="repositories-list">
         {repositories.map((repo, index) => (
           <li key={index}>
             <a href={repo.repositoryUrl} target="_blank" rel="noopener noreferrer">

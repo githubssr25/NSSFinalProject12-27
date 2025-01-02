@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getAnnotationById, editAnnotation } from "../manager/annotationsManager";
 import { getRepositoriesByUserId } from "../manager/repositoryManager";
+import "./EditAnnotation.css"
 
 
 /* eslint-disable react/prop-types */

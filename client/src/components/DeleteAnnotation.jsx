@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { deleteAnnotation } from "../manager/annotationsManager";
+import "./DeleteAnnotation.css";
 
 
 export const DeleteAnnotation = () => {

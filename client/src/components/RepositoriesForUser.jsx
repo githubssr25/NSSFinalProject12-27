@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getRepositoriesByUserId } from "../manager/repositoryManager";
 import { useParams } from "react-router-dom";
+import "./RepositoriesForUser.css";
 
 /* eslint-disable react/prop-types */
 export const RepositoriesForUser = ({ loggedInUser }) => {

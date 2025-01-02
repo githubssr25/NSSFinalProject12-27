@@ -1,0 +1,94 @@
+/* Non-Mobile Adjustments */
+.container {
+    padding: 20px; /* Add padding for spacious desktop view */
+    width: 60%; /* Constrain width for better alignment */
+    margin: 0 auto; /* Center the container horizontally */
+    text-align: left; /* Keep content aligned to the left */
+    transform: translateX(-20%); /* Adjust to align with the navbar */
+  }
+  
+  /* Heading adjustments */
+  h3 {
+    font-size: 24px; /* Larger font size for better readability on desktops */
+    text-align: center; /* Center align the heading */
+    margin-bottom: 20px; /* Add space below the heading */
+  }
+  
+  /* Form group styling */
+  .form-group {
+    margin-bottom: 20px; /* Add space between form groups */
+  }
+  
+  /* Input, select, and text areas */
+  input,
+  select {
+    width: 100%; /* Keep inputs wide but constrained */
+    padding: 10px; /* Add padding for better usability */
+    font-size: 16px; /* Increase font size for readability */
+    margin-bottom: 15px; /* Space out fields vertically */
+    box-sizing: border-box; /* Include padding in width */
+  }
+  
+  /* Button adjustments */
+  .btn-add-annotation {
+    font-size: 16px; /* Adjust button size for desktop */
+    width: 40%; /* Constrain button width */
+    display: block; /* Center the button */
+    margin: 20px auto 0 auto; /* Space above and center the button */
+  }
+  
+  /* Label adjustments */
+  label {
+    font-size: 16px; /* Larger font size for better visibility */
+    margin-bottom: 10px; /* Add space below the label */
+    display: block; /* Ensure labels are above inputs */
+  }
+
+
+/* Mobile-Specific Adjustments */
+@media (max-width: 768px) {
+    /* Container styling for mobile */
+    .container {
+      padding: 10px; /* Add padding for mobile */
+      width: 75%; /* Constrain width to fit screen */
+      margin: 0 auto; /* Center the container */
+      text-align: left; /* Align content to the left */
+      transform: translateX(-10%); /* Slightly push left to align with navbar */
+    }
+  
+    /* Heading adjustments */
+    h3 {
+      font-size: 18px; /* Reduce font size for smaller screens */
+      text-align: center; /* Center align heading */
+      margin-bottom: 15px; /* Add spacing below heading */
+    }
+  
+    /* Form group styling */
+    .form-group {
+      margin-bottom: 15px; /* Space between form elements */
+    }
+  
+    /* Input, select, and text areas */
+    input,
+    select {
+      width: 90%; /* Ensure inputs and selects fit within container */
+      padding: 8px; /* Add padding for touch-friendly interaction */
+      font-size: 14px; /* Adjust font size for readability */
+      margin-bottom: 10px; /* Add spacing between fields */
+      box-sizing: border-box; /* Include padding in width */
+    }
+  
+    /* Button adjustments */
+    .btn-add-annotation {
+      font-size: 14px; /* Adjust font size for smaller screens */
+      width: 90%; /* Make button take up most of the width */
+    }
+  
+    /* Label adjustments */
+    label {
+      font-size: 14px; /* Smaller font size for readability */
+      margin-bottom: 5px; /* Space below the label */
+      display: block; /* Ensure labels appear above inputs */
+    }
+  }
+  

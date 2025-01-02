@@ -1,0 +1,27 @@
+/* Mobile-Specific Adjustments */
+@media (max-width: 768px) {
+    /* Container styling for mobile */
+    .container {
+      padding: 10px; /* Add padding for better spacing */
+      width: 70%; /* Constrain width to fit mobile screens */
+      margin: 0 auto; /* Center the container horizontally */
+      text-align: center; /* Center-align content for clarity */
+      transform: translateX(-15%); /* Slightly align container with navbar */
+    }
+  
+    /* Heading adjustments */
+    h2 {
+      font-size: 18px; /* Reduce font size for smaller screens */
+      margin-bottom: 20px; /* Add spacing below the heading */
+    }
+  
+    /* Button styling */
+    .btn {
+      font-size: 14px; /* Smaller button text size for readability */
+      padding: 10px 15px; /* Adjust padding for touch-friendly buttons */
+      width: 90%; /* Make buttons full width for ease of use */
+      margin: 10px auto; /* Add spacing and center-align buttons */
+      display: block; /* Ensure buttons are stacked */
+    }
+  }
+  

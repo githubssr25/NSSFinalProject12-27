@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../manager/authManager";
 import { Button, FormGroup, Input, Label } from "reactstrap";
+import "./Register.css";
 
 const Register = ({ setLoggedInUser }) => {
   const [email, setEmail] = useState("");
