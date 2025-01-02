@@ -299,6 +299,145 @@ modelBuilder.Entity<Annotation>().HasData(
     }
 );
 
+// Seed Repositories
+modelBuilder.Entity<Repository>().HasData(
+    new Repository
+    {
+        RepositoryId = 8,
+        RepositoryName = "Cyber Security Toolkit",
+        RepositoryUrl = "https://github.com/example/security-toolkit",
+        Description = "A comprehensive toolkit for cyber security.",
+        Language = "Python",
+        Stars = 1300,
+        CategoryId = 6
+    },
+    new Repository
+    {
+        RepositoryId = 9,
+        RepositoryName = "Testing Framework Pro",
+        RepositoryUrl = "https://github.com/example/testing-framework-pro",
+        Description = "A robust framework for automated testing.",
+        Language = "Java",
+        Stars = 1100,
+        CategoryId = 7
+    },
+    new Repository
+    {
+        RepositoryId = 10,
+        RepositoryName = "Machine Learning Sandbox",
+        RepositoryUrl = "https://github.com/example/ml-sandbox",
+        Description = "An interactive sandbox for machine learning models.",
+        Language = "Python",
+        Stars = 2000,
+        CategoryId = 8
+    },
+    new Repository
+    {
+        RepositoryId = 11,
+        RepositoryName = "Full Stack Starter Kit",
+        RepositoryUrl = "https://github.com/example/full-stack-starter",
+        Description = "A starter kit for full stack development projects.",
+        Language = "TypeScript",
+        Stars = 1500,
+        CategoryId = 4
+    },
+    new Repository
+    {
+        RepositoryId = 12,
+        RepositoryName = "Data Visualization Library",
+        RepositoryUrl = "https://github.com/example/data-visualization-lib",
+        Description = "A library for creating stunning data visualizations.",
+        Language = "JavaScript",
+        Stars = 1400,
+        CategoryId = 5
+    }
+);
+
+
+// Seed UserRepositories
+modelBuilder.Entity<UserRepository>().HasData(
+    new UserRepository { UserId = "6", RepositoryId = 8, SavedAt = DateTime.UtcNow },
+    new UserRepository { UserId = "7", RepositoryId = 9, SavedAt = DateTime.UtcNow },
+    new UserRepository { UserId = "8", RepositoryId = 10, SavedAt = DateTime.UtcNow },
+    new UserRepository { UserId = "9", RepositoryId = 11, SavedAt = DateTime.UtcNow },
+    new UserRepository { UserId = "10", RepositoryId = 12, SavedAt = DateTime.UtcNow },
+    new UserRepository { UserId = "1", RepositoryId = 9, SavedAt = DateTime.UtcNow },
+    new UserRepository { UserId = "2", RepositoryId = 10, SavedAt = DateTime.UtcNow },
+    new UserRepository { UserId = "3", RepositoryId = 11, SavedAt = DateTime.UtcNow },
+    new UserRepository { UserId = "4", RepositoryId = 12, SavedAt = DateTime.UtcNow },
+    new UserRepository { UserId = "5", RepositoryId = 8, SavedAt = DateTime.UtcNow }
+);
+
+
+// Seed Annotations
+modelBuilder.Entity<Annotation>().HasData(
+    new Annotation
+    {
+        AnnotationId = 6,
+        UserId = "7",
+        RepositoryId = 9,
+        Type = "Tag",
+        Content = "Automated Testing",
+        CreatedAt = DateTime.UtcNow
+    },
+    new Annotation
+    {
+        AnnotationId = 7,
+        UserId = "8",
+        RepositoryId = 10,
+        Type = "Note",
+        Content = "Great sandbox for testing ML algorithms.",
+        CreatedAt = DateTime.UtcNow
+    },
+    new Annotation
+    {
+        AnnotationId = 8,
+        UserId = "9",
+        RepositoryId = 11,
+        Type = "Tag",
+        Content = "Full Stack",
+        CreatedAt = DateTime.UtcNow
+    },
+    new Annotation
+    {
+        AnnotationId = 9,
+        UserId = "10",
+        RepositoryId = 12,
+        Type = "Note",
+        Content = "Awesome data visualization library for presentations.",
+        CreatedAt = DateTime.UtcNow
+    },
+    new Annotation
+    {
+        AnnotationId = 10,
+        UserId = "1",
+        RepositoryId = 9,
+        Type = "Note",
+        Content = "Could use this for testing in our current project.",
+        CreatedAt = DateTime.UtcNow
+    },
+    new Annotation
+    {
+        AnnotationId = 11,
+        UserId = "2",
+        RepositoryId = 10,
+        Type = "Note",
+        Content = "Sandbox looks promising for prototyping new ML models.",
+        CreatedAt = DateTime.UtcNow
+    },
+    new Annotation
+    {
+        AnnotationId = 12,
+        UserId = "3",
+        RepositoryId = 11,
+        Type = "Tag",
+        Content = "Starter Kit",
+        CreatedAt = DateTime.UtcNow
+    }
+);
+
+
+
 
 
 
