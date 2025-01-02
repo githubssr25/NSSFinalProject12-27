@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getRepositoriesByUserId } from "../manager/repositoryManager";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./RepositoriesForUser.css";
 
 /* eslint-disable react/prop-types */
@@ -33,6 +33,14 @@ export const RepositoriesForUser = ({ loggedInUser }) => {
             <p>{repo.description}</p>
             <p>{repo.language} - {repo.stars} Stars</p>
             {repo.category && <p>Category: {repo.category.description}</p>}
+            <div>
+              <Link
+                to={`/repositories/delete/${repo.repositoryId}`}
+                className="btn btn-danger mx-2"
+              >
+                Delete
+              </Link>
+            </div>
           </li>
         ))}
       </ul>

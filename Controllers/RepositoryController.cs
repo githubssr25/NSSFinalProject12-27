@@ -127,7 +127,39 @@ namespace NSSFinalProject12_27.Controllers
              _dbContext.SaveChanges();
              return Ok(userRepositoryJoin);
             }
-}}
+}
+
+
+// Delete a repository
+[HttpDelete("{repositoryId}")]
+public IActionResult DeleteRepository(int repositoryId)
+{
+    // Get the repository and include the associated UserRepositories
+    var repository = _dbContext.Repositories
+        .FirstOrDefault(r => r.RepositoryId == repositoryId);
+
+    if (repository == null)
+    {
+        return NotFound("Repository not found.");
+    }
+
+// Load the associated UserRepositories explicitly
+repository.UserRepositories = _dbContext.UserRepositories
+    .Where(ur => ur.RepositoryId == repositoryId)
+    .ToList();
+
+    // Remove associated UserRepositories and the repository itself
+    _dbContext.UserRepositories.RemoveRange(repository.UserRepositories);
+    _dbContext.Repositories.Remove(repository);
+    _dbContext.SaveChanges();
+
+    return NoContent(); // Return 204 No Content
+}
+
+
+
+}
+
 
 
 // public class UserRepository{

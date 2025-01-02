@@ -74,6 +74,22 @@ try {
 }
 };
 
+export const deleteRepository = async (repositoryId) => {
+  try {
+    const response = await fetch(`${BASE_URL}/${repositoryId}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error deleting repository: ${response.statusText}`);
+    }
+
+    return true; // Return success flag
+  } catch (error) {
+    console.error("Error deleting repository:", error);
+    throw error;
+  }
+};
 
 
 
