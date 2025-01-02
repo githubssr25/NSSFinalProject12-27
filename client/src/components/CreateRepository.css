@@ -1,0 +1,71 @@
+/* Non-Mobile Adjustments */
+.container {
+    width: 40%; /* Constrain width for better alignment */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add padding for spacing */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Adjust Heading */
+h3 {
+    text-align: center; /* Center-align the heading */
+    margin-bottom: 20px; /* Add space below the heading */
+}
+
+/* Form Adjustments */
+.form-group {
+    margin-bottom: 20px; /* Add space between form groups */
+}
+
+input, textarea, select {
+    width: 100%; /* Full width for inputs and selects */
+    padding: 10px; /* Add padding for touch-friendly inputs */
+    font-size: 16px; /* Adjust font size for readability */
+    margin-bottom: 15px; /* Add spacing between inputs */
+}
+
+.btn {
+    font-size: 16px; /* Adjust button font size */
+    display: block; /* Make buttons block-level */
+    margin: 20px auto; /* Center the button */
+    width: 50%; /* Limit button width */
+}
+
+@media (max-width: 768px) {
+    /* Container styling for proper alignment */
+    .container {
+        padding: 10px; /* Add padding for mobile */
+        width: 75%; /* Narrow the container slightly */
+        transform: translateX(-20%); /* Push container left */
+        text-align: left; /* Align content to the left */
+    }
+    /* Adjust heading for mobile */
+    h3 {
+      font-size: 18px; /* Smaller font size for mobile screens */
+      text-align: left; /* Center align heading */
+      margin-bottom: 15px; /* Add spacing below the heading */
+    }
+  
+    /* Form group adjustments */
+    .form-group {
+      margin-bottom: 15px; /* Add space between form groups */
+    }
+  
+    /* Input and textarea adjustments */
+    input, textarea, select {
+      width: 90%; /* Ensure inputs take full width */
+      padding: 4px; /* Add padding for touch-friendly inputs */
+      font-size: 14px; /* Adjust font size for readability */
+      box-sizing: border-box; /* Include padding in width calculation */
+      margin-bottom: 10px; /* Add spacing between inputs */
+    }
+  
+    /* Button styling */
+    .btn {
+      font-size: 14px; /* Smaller font size for buttons */
+      padding: 8px 12px; /* Adjust padding for mobile */
+      width: 90%; /* Make buttons full width */
+      margin-top: 10px; /* Add some spacing above buttons */
+    }
+  }
+  

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { createNewRepository } from "../manager/repositoryManager";
 import { getAllCategories } from "../manager/categoryManager";
+import "./CreateRepository.css";
 
 /* eslint-disable react/prop-types */
 export const CreateRepository = ({loggedInUser}) => {

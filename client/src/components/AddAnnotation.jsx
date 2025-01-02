@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { createAnnotation } from "../manager/annotationsManager";
 import { getRepositoriesByUserId } from "../manager/repositoryManager";
+import "./AddAnnotation.css";
 
 /* eslint-disable react/prop-types */
 export const AddAnnotation = ({loggedInUser}) => {
