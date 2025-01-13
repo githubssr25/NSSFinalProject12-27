@@ -2,7 +2,6 @@ namespace NSSFinalProject.Models.DTOs;
 
     public class CreateRepositoryDTO
     {
-        public int RepositoryId { get; set; }
 
         public int UserId { get; set;}
         public string RepositoryName { get; set; }

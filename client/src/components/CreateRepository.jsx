@@ -34,27 +34,30 @@ setFormData((form) => ({
 }));
 }
 const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-const createRepositoryDto = {
-    ...formData,
-    userId: parseInt(loggedInUser.id, 10),
-}
+  const createRepositoryDto = {
+      repositoryName: formData.repositoryName, // Required
+      repositoryUrl: formData.repositoryUrl,   // Required
+      description: formData.description || null, // Optional
+      language: formData.language || null,     // Optional
+      stars: parseInt(formData.stars, 10) || 0, // Default to 0 if not provided
+      categoryId: formData.categoryId ? parseInt(formData.categoryId, 10) : null, // Null if not selected
+      userId: parseInt(loggedInUser.id, 10)    // Required
+  };
 
-const ourResponse = await createNewRepository(createRepositoryDto);
+  console.log("Payload sent to backend:", createRepositoryDto);
 
-if(ourResponse){
-    console.log("successfully created new repository", ourResponse);
-}
-setFormData({
-    repositoryName: "",
-    repositoryUrl: "",
-    description: "",
-    language: "",
-    stars: 0,
-    categoryId: null,
-  });
-}
+  try {
+      const ourResponse = await createNewRepository(createRepositoryDto);
+      if (ourResponse) {
+          console.log("Successfully created new repository", ourResponse);
+      }
+  } catch (error) {
+      console.error("Error creating repository:", error);
+      alert("Failed to create repository. Please check the input fields and try again.");
+  }
+};
 
 
 

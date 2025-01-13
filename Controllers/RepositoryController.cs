@@ -73,61 +73,80 @@ namespace NSSFinalProject12_27.Controllers
         [HttpPost]
         public IActionResult CreateRepository([FromBody] CreateRepositoryDTO createRepositoryDTO){
 
-              // Check if the repository already exists in the database
+
+            Console.WriteLine($"Received payload: {System.Text.Json.JsonSerializer.Serialize(createRepositoryDTO)}");
+
+            if (createRepositoryDTO == null)
+            {
+                Console.WriteLine("createRepositoryDTO is null.");
+                return BadRequest("Payload is invalid.");
+            }
+
+            Console.WriteLine($"RepositoryName: {createRepositoryDTO.RepositoryName}");
+            Console.WriteLine($"UserId: {createRepositoryDTO.UserId}");
+
+
+    // Check if a repository with the same name already exists
     var existingRepository = _dbContext.Repositories
-        .FirstOrDefault(r => r.RepositoryId == createRepositoryDTO.RepositoryId);
+        .FirstOrDefault(r => r.RepositoryName == createRepositoryDTO.RepositoryName);
 
-        if(existingRepository == null){ 
+    Repository repositoryToUse;
 
-         var newRepository =  new Repository {
+    if (existingRepository != null)
+    {
+        Console.WriteLine($"Repository with name '{createRepositoryDTO.RepositoryName}' already exists.");
+
+        // Check if the user is already associated with this existing repository
+        var existingUserRepositoryJoin = _dbContext.UserRepositories
+            .FirstOrDefault(ur => ur.RepositoryId == existingRepository.RepositoryId
+                                  && ur.UserId == createRepositoryDTO.UserId.ToString());
+        if (existingUserRepositoryJoin != null)
+        {
+            Console.WriteLine($"User {createRepositoryDTO.UserId} is already associated with repository '{createRepositoryDTO.RepositoryName}'.");
+            return BadRequest("User is already associated with this repository.");
+        }
+
+        repositoryToUse = existingRepository; // Use the existing repository
+    }
+    else
+    {
+        // Create a new repository
+        repositoryToUse = new Repository
+        {
             RepositoryName = createRepositoryDTO.RepositoryName,
             RepositoryUrl = createRepositoryDTO.RepositoryUrl,
             Description = createRepositoryDTO.Description,
             Language = createRepositoryDTO.Language,
             Stars = createRepositoryDTO.Stars,
-            CategoryId = createRepositoryDTO.CategoryId,
-            UserRepositories = new List<UserRepository> {}
-         };
+            CategoryId = createRepositoryDTO.CategoryId, // Can be null
+            UserRepositories = new List<UserRepository>() // Initialize navigation property
+        };
 
-         // Add the new repository to the database
-    _dbContext.Repositories.Add(newRepository);
-    _dbContext.SaveChanges(); // This generates the RepositoryId for the new repository
+        _dbContext.Repositories.Add(repositoryToUse);
+        _dbContext.SaveChanges(); // Generates RepositoryId
+        Console.WriteLine($"New repository '{repositoryToUse.RepositoryName}' created.");
+    }
 
-     
-    // _dbContext.UserRepositories.Add(userRepositoryJoin);
-    //You only need to add the Repository entity with the associated UserRepository entry. EF Core will cascade and handle the UserRepository insertion automatically.
-
-// Use the newly generated RepositoryId for the join table
+ // Add the user-repository join entry (only one join created)
     var userRepositoryJoin = new UserRepository
     {
         UserId = createRepositoryDTO.UserId.ToString(),
-        RepositoryId = newRepository.RepositoryId, // Use the ID from the saved repository
+        RepositoryId = repositoryToUse.RepositoryId,
         SavedAt = DateTime.UtcNow
     };
 
-    // Add the join entry to the UserRepositories table
     _dbContext.UserRepositories.Add(userRepositoryJoin);
     _dbContext.SaveChanges();
- return Ok(newRepository);
 
-        } else {
-            var existingUserRepositoryJoin = _dbContext.UserRepositories.FirstOrDefault(ur => ur.RepositoryId == createRepositoryDTO.RepositoryId && ur.UserId == createRepositoryDTO.UserId.ToString());
-            if (existingUserRepositoryJoin != null)
-        {
-            return BadRequest("User is already associated with this repository.");
-        }
-
-            var userRepositoryJoin = new UserRepository {
-            UserId = createRepositoryDTO.UserId.ToString(),
-            RepositoryId = createRepositoryDTO.RepositoryId,
-            SavedAt = DateTime.UtcNow
-            };
-            _dbContext.UserRepositories.Add(userRepositoryJoin);
-            // existingRepository.UserRepositories.Add(userRepositoryJoin);
-             _dbContext.SaveChanges();
-             return Ok(userRepositoryJoin);
-            }
+    Console.WriteLine($"User {createRepositoryDTO.UserId} associated with repository '{repositoryToUse.RepositoryName}'.");
+    return Ok(new { repository = repositoryToUse, userRepositoryJoin });
 }
+
+
+
+
+
+
 
 
 // Delete a repository

@@ -99,13 +99,30 @@ public async Task<IActionResult> Login([FromBody] LoginDTO loginDto)
             return Ok("Logout successful.");
         }
 
+
+
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegistrationDTO registration)
         {
             try
             {
+             // Fetch all IDs and filter numeric ones in memory
+        var userIds = _dbContext.Users
+            .Select(u => u.Id) // Select all IDs from the database
+            .ToList()          // Bring them into memory
+            .Where(id => id.All(char.IsDigit)) // Filter numeric IDs
+            .Select(int.Parse) // Parse them to integers
+            .OrderByDescending(id => id); // Get the highest one
+
+        // Get the highest numeric userId or default to 0
+        var highestUserId = userIds.FirstOrDefault();
+
+        // Increment and assign the new userId
+        var newUserId = (highestUserId + 1).ToString();
+
                 var user = new User
                 {
+                    Id = newUserId, // Set the custom userId
                     UserName = registration.UserName,
                     Email = registration.Email,
                     FirstName = registration.FirstName,
@@ -113,7 +130,7 @@ public async Task<IActionResult> Login([FromBody] LoginDTO loginDto)
                     EmailConfirmed = true // Assume email is confirmed for simplicity
                 };
 
-                Console.WriteLine($"Attempting registration for {registration.Email}");
+                Console.WriteLine($"Attempting registration for {registration.Email} with userId {newUserId}");
 
                 var result = await _userManager.CreateAsync(user, registration.Password);
                 if (!result.Succeeded)
@@ -153,6 +170,7 @@ public async Task<IActionResult> Login([FromBody] LoginDTO loginDto)
                 return StatusCode(500, "Internal server error.");
             }
         }
+
 
 
         // Me Endpoint
