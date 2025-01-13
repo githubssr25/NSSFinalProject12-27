@@ -10,18 +10,21 @@ export const Login = ({ setLoggedInUser }) => {
   const [failedLogin, setFailedLogin] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(email, password).then((user) => {
-      if (!user) {
-        setFailedLogin(true);
-      } else {
-        localStorage.setItem("loggedInUser", JSON.stringify(user));
-        setLoggedInUser(user);
-        navigate("/");
-      }
-    });
+    try {
+      localStorage.removeItem("loggedInUser"); // Clear any stale data
+      const user = await login(email, password);
+      console.log("User logged in:", user);
+      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      setLoggedInUser(user);
+      navigate("/");
+    } catch (err) {
+      console.error("Login failed:", err);
+      setFailedLogin(true);
+    }
   };
+  
 
   return (
     <div className="container">

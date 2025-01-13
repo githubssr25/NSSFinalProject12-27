@@ -11,6 +11,7 @@ function App() {
 
   useEffect(() => {
     const storedUser = localStorage.getItem("loggedInUser");
+    console.log("Found logged-in user in storage:", storedUser)
     if (storedUser) {
       setLoggedInUser(JSON.parse(storedUser));
     } else {

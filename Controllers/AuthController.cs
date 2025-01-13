@@ -20,50 +20,75 @@ namespace NSSFinalProject.Controllers
 
         public AuthController(NSSFinalProjectDbContext dbContext, UserManager<User> userManager)
         {
+             Console.WriteLine("AuthController instantiated.");
+             Console.WriteLine($"DbContext: {dbContext != null}, UserManager: {userManager != null}");
             _dbContext = dbContext;
             _userManager = userManager;
         }
 
         // Login Endpoint
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromHeader(Name = "Authorization")] string authHeader)
+[HttpPost("login")]
+public async Task<IActionResult> Login([FromBody] LoginDTO loginDto)
+{
+    try
+    {
+        if (string.IsNullOrWhiteSpace(loginDto.Email) || string.IsNullOrWhiteSpace(loginDto.Password))
         {
-            if (string.IsNullOrWhiteSpace(authHeader) || !authHeader.StartsWith("Basic "))
-                return Unauthorized("Invalid Authorization header.");
-
-            string encodedCreds = authHeader.Substring(6).Trim();
-            string creds = Encoding.GetEncoding("iso-8859-1").GetString(Convert.FromBase64String(encodedCreds));
-
-            int separator = creds.IndexOf(':');
-            if (separator == -1)
-                return Unauthorized("Invalid credentials format.");
-
-            string email = creds.Substring(0, separator);
-            string password = creds.Substring(separator + 1);
-
-            var user = await _userManager.FindByEmailAsync(email);
-            if (user == null)
-                return Unauthorized("Invalid credentials.");
-
-            var result = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, password);
-            if (result != PasswordVerificationResult.Success)
-                return Unauthorized("Invalid credentials.");
-
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Name, user.UserName)
-            };
-
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-            await HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity));
-
-            return Ok("Login successful.");
+            Console.WriteLine("Email or password is missing.");
+            return BadRequest("Email and password are required.");
         }
+
+        Console.WriteLine($"Attempting login for Email: {loginDto.Email}");
+
+        var user = await _userManager.FindByEmailAsync(loginDto.Email);
+        if (user == null)
+        {
+            Console.WriteLine($"User not found: {loginDto.Email}");
+            return Unauthorized("Invalid credentials.");
+        }
+
+        Console.WriteLine($"User found: {user.UserName}. Verifying password.");
+
+        var result = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, loginDto.Password);
+        if (result != PasswordVerificationResult.Success)
+        {
+            Console.WriteLine($"Password verification failed for user: {loginDto.Email}");
+            return Unauthorized("Invalid credentials.");
+        }
+
+        Console.WriteLine($"Password verified for user: {user.UserName}");
+
+        var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.Name, user.UserName)
+        };
+
+        var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+        await HttpContext.SignInAsync(
+            CookieAuthenticationDefaults.AuthenticationScheme,
+            new ClaimsPrincipal(claimsIdentity));
+
+        Console.WriteLine($"User {user.UserName} logged in successfully.");
+        return Ok(new
+        {
+            id = user.Id,
+            email = user.Email,
+            userName = user.UserName,
+            firstName = user.FirstName,
+            lastName = user.LastName
+        });
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error during login: {ex.Message}");
+        return StatusCode(500, "Internal server error.");
+    }
+}
+
+
 
         // Logout Endpoint
         [HttpPost("logout")]

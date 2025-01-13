@@ -12,8 +12,9 @@ export const login = async (email, password) => {
     if (!response.ok) {
       throw new Error(`Login failed: ${response.statusText}`);
     }
-
-    return await response.json(); // Response from the backend (e.g., success message)
+    const user = await response.json();
+    console.log("Successfully logged in user:", user); // Add this log
+    return user;
   } catch (error) {
     console.error("Error during login:", error);
     throw error;

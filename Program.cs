@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using NSSFinalProject12_27.Context;
+using NSSFinalProject.Models;
 using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +29,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 
 // Add Identity services for authentication
-builder.Services.AddIdentityCore<IdentityUser>(options =>
+builder.Services.AddIdentityCore<User>(options =>
 {
     options.Password.RequireDigit = false;
     options.Password.RequiredLength = 8;
