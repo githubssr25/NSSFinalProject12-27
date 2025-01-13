@@ -99,25 +99,61 @@ public async Task<IActionResult> Login([FromBody] LoginDTO loginDto)
             return Ok("Logout successful.");
         }
 
-        // Register Endpoint
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegistrationDTO registration)
         {
-            var user = new User
+            try
             {
-                UserName = registration.UserName,
-                Email = registration.Email,
-                FirstName = registration.FirstName,
-                LastName = registration.LastName,
-                EmailConfirmed = true // For simplicity, assume emails are confirmed
-            };
+                var user = new User
+                {
+                    UserName = registration.UserName,
+                    Email = registration.Email,
+                    FirstName = registration.FirstName,
+                    LastName = registration.LastName,
+                    EmailConfirmed = true // Assume email is confirmed for simplicity
+                };
 
-            var result = await _userManager.CreateAsync(user, registration.Password);
-            if (!result.Succeeded)
-                return BadRequest(result.Errors);
+                Console.WriteLine($"Attempting registration for {registration.Email}");
 
-            return Ok("Registration successful.");
+                var result = await _userManager.CreateAsync(user, registration.Password);
+                if (!result.Succeeded)
+                {
+                    Console.WriteLine($"Registration failed for {registration.Email}: {string.Join(", ", result.Errors.Select(e => e.Description))}");
+                    return BadRequest(result.Errors);
+                }
+
+                Console.WriteLine($"Registration successful for {registration.Email}");
+
+                // Automatically log the user in after registration
+                var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
+            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.Name, user.UserName)
+        };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity));
+
+                return Ok(new
+                {
+                    id = user.Id,
+                    email = user.Email,
+                    userName = user.UserName,
+                    firstName = user.FirstName,
+                    lastName = user.LastName
+                });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during registration: {ex.Message}");
+                return StatusCode(500, "Internal server error.");
+            }
         }
+
 
         // Me Endpoint
         [HttpGet("me")]

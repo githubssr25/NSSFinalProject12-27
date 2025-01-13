@@ -38,24 +38,35 @@ export const logout = async () => {
 };
 
 // Register method
-export const register = async (userProfile) => {
+export const register = async (email, password, userName, firstName, lastName) => {
+  const _apiUrl = "http://localhost:5201/api/auth/register";
   try {
-    const response = await fetch(_apiUrl + "/register", {
+    const response = await fetch(_apiUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(userProfile),
+      body: JSON.stringify({
+        email,
+        password,
+        userName,
+        firstName,
+        lastName,
+      }),
     });
 
     if (!response.ok) {
       throw new Error(`Registration failed: ${response.statusText}`);
     }
 
-    return await response.json(); // Response from the backend (e.g., success message)
+    const user = await response.json();
+    console.log("Successfully registered user:", user);
+    return user;
   } catch (error) {
     console.error("Error during registration:", error);
     throw error;
   }
 };
+
+
 
 // Get User by ID method
 export const getUserById = async (id) => {

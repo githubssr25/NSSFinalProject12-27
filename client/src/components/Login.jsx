@@ -24,7 +24,6 @@ export const Login = ({ setLoggedInUser }) => {
       setFailedLogin(true);
     }
   };
-  
 
   return (
     <div className="container">
@@ -52,6 +51,17 @@ export const Login = ({ setLoggedInUser }) => {
       {/* <p>
         Don't have an account? <Link to="/register">Register</Link>
       </p> */}
+
+      <p className="mt-3">
+        First-time user?{" "}
+        <Button
+          color="link"
+          className="btn-register"
+          onClick={() => navigate("/register")}
+        >
+          Register Below
+        </Button>
+      </p>
     </div>
   );
 };
