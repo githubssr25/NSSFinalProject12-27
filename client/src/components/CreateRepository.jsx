@@ -15,6 +15,8 @@ export const CreateRepository = ({loggedInUser}) => {
         categoryId: null,
     });
 
+    const [successMessage, setSuccessMessage] = useState(""); // State for success message
+
     useEffect(() => {
         // Fetch categories from the backend
         getAllCategories()
@@ -49,14 +51,26 @@ const handleSubmit = async (e) => {
   console.log("Payload sent to backend:", createRepositoryDto);
 
   try {
-      const ourResponse = await createNewRepository(createRepositoryDto);
-      if (ourResponse) {
-          console.log("Successfully created new repository", ourResponse);
-      }
-  } catch (error) {
-      console.error("Error creating repository:", error);
-      alert("Failed to create repository. Please check the input fields and try again.");
-  }
+    const ourResponse = await createNewRepository(createRepositoryDto);
+    if (ourResponse) {
+        console.log("Successfully created new repository", ourResponse);
+        // Display success message with repository name
+        setSuccessMessage(`Successfully created repository: ${ourResponse.repositoryName}`);
+
+        // Clear the form
+        setFormData({
+            repositoryName: "",
+            repositoryUrl: "",
+            description: "",
+            language: "",
+            stars: "",
+            categoryId: null,
+        });
+    }
+} catch (error) {
+    console.error("Error creating repository:", error);
+    alert("Failed to create repository. Please check the input fields and try again.");
+}
 };
 
 
@@ -65,6 +79,7 @@ const handleSubmit = async (e) => {
 return (
 <div className="container">
     <h3> Create A New Repository </h3>
+    {successMessage && <div className="alert alert-success mt-3">{successMessage}</div>}
     <form onSubmit={handleSubmit}>
         <div className="form-group">
             <label> Make a Repository Name</label>
@@ -130,7 +145,7 @@ return (
             id="categoryId"  //The value of the selected <option> is passed to the <select> element's value attribute.
             // The onChange handler (handleInputChange) is triggered, capturing the name and value of the <select> element.
             name="categoryId"
-            value={formData.categoryId}
+            value={formData.categoryId || ""}
             onChange={handleChangeForm}
             >
                 <option value="" >

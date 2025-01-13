@@ -24,10 +24,10 @@ AuthorizedRoute.propTypes = {
   all: PropTypes.bool, // Whether all roles must match (default: false).
 };
 
-AuthorizedRoute.defaultProps = {
-  roles: [],
-  all: false,
-};
+// AuthorizedRoute.defaultProps = {
+//   roles: [],
+//   all: false,
+// };
 
 export default AuthorizedRoute;
 
