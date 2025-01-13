@@ -176,6 +176,69 @@ repository.UserRepositories = _dbContext.UserRepositories
 }
 
 
+[HttpGet("{repositoryId}")]
+public IActionResult GetRepositoryById(int repositoryId)
+{
+    // Fetch the repository by ID
+    var repository = _dbContext.Repositories
+        .Where(r => r.RepositoryId == repositoryId)
+        .Select(r => new RepositoryDTO
+        {
+            RepositoryId = r.RepositoryId,
+            RepositoryName = r.RepositoryName,
+            RepositoryUrl = r.RepositoryUrl,
+            Description = r.Description,
+            Language = r.Language,
+            Stars = r.Stars,
+            Category = r.Category == null ? null : new CategoryDTO
+            {
+                CategoryId = r.Category.CategoryId,
+                Description = r.Category.Description
+            }
+        })
+        .FirstOrDefault();
+
+    if (repository == null)
+    {
+        // Return 404 if the repository is not found
+        return NotFound($"Repository with ID {repositoryId} not found.");
+    }
+
+    // Return the repository details
+    return Ok(repository);
+}
+
+[HttpPut("{repositoryId}")]
+public IActionResult UpdateRepository(int repositoryId, [FromBody] UpdateRepositoryDTO updateRepositoryDto)
+{
+    if (!ModelState.IsValid)
+    {
+        return BadRequest(ModelState);
+    }
+
+    var repository = _dbContext.Repositories.FirstOrDefault(r => r.RepositoryId == repositoryId);
+    if (repository == null)
+    {
+        return NotFound($"Repository with ID {repositoryId} not found.");
+    }
+
+    // Update repository fields
+    repository.RepositoryName = updateRepositoryDto.RepositoryName;
+    repository.RepositoryUrl = updateRepositoryDto.RepositoryUrl;
+    repository.Description = updateRepositoryDto.Description;
+    repository.Language = updateRepositoryDto.Language;
+    repository.Stars = updateRepositoryDto.Stars;
+    repository.CategoryId = updateRepositoryDto.CategoryId;
+
+    _dbContext.SaveChanges();
+
+    return Ok(repository);
+}
+
+
+
+
+
 
 }
 

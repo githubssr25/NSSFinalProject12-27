@@ -13,6 +13,7 @@ import {AddAnnotation} from "./components/AddAnnotation";
 import {NavBar} from "./components/NavBar";
 import {RepositoriesForUser} from "./components/RepositoriesForUser"
 import {DeleteRepository} from "./components/DeleteRepository";
+import {EditRepository} from "./components/EditRepository";
 
 /* eslint-disable react/prop-types */
 export const ApplicationViews = ({loggedInUser, setLoggedInUser}) => {
@@ -79,6 +80,7 @@ A route with path="/" is the parent route. All other routes nested inside it (de
           element={<RepositoriesForUser loggedInUser={loggedInUser} />}
           />
             <Route path="delete/:repositoryId" element={<DeleteRepository />} /> 
+            <Route path="edit/:repositoryId" element={<EditRepository loggedInUser={loggedInUser}/>} />
         </Route>
 
   {/*Annotations Group */}

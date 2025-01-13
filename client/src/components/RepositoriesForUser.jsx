@@ -31,9 +31,17 @@ export const RepositoriesForUser = ({ loggedInUser }) => {
               {repo.repositoryName}
             </a>
             <p>{repo.description}</p>
-            <p>{repo.language} - {repo.stars} Stars</p>
+            <p>
+              {repo.language} - {repo.stars} Stars
+            </p>
             {repo.category && <p>Category: {repo.category.description}</p>}
             <div>
+              <Link
+                to={`/repositories/edit/${repo.repositoryId}`}
+                className="btn btn-primary mx-2"
+              >
+                Edit
+              </Link>
               <Link
                 to={`/repositories/delete/${repo.repositoryId}`}
                 className="btn btn-danger mx-2"

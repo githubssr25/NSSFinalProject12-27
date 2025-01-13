@@ -91,10 +91,41 @@ export const deleteRepository = async (repositoryId) => {
   }
 };
 
+export const updateRepository = async (repositoryId, updateRepositoryDto) => {
+  try {
+    const response = await fetch(`${BASE_URL}/${repositoryId}`, {
+      method: "PUT", // Use PUT for updating
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateRepositoryDto), // Pass updated repository details
+    });
 
+    if (!response.ok) {
+      throw new Error(`Error updating repository: ${response.statusText}`);
+    }
 
+    return await response.json(); // Return updated repository details
+  } catch (error) {
+    console.error("Error updating repository:", error);
+    throw error;
+  }
+};
 
-
+export const getRepositoryById = async (repositoryId) => {
+  try {
+    const response = await fetch(`${BASE_URL}/${repositoryId}`, {
+      method: "GET",
+    });
+    if (!response.ok) {
+      throw new Error(`Error fetching repository: ${response.statusText}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching repository:", error);
+    throw error;
+  }
+};
 
 
 
