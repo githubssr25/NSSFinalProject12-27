@@ -127,8 +127,35 @@ export const getRepositoryById = async (repositoryId) => {
   }
 };
 
+export const saveRepository = async(repositoryId, userId) => {
+try {
+
+  console.log(`Request URL: ${BASE_URL}/${repositoryId}/save?userId=${userId}`);
+  console.log(`Type of userId: ${typeof userId}`);
+
+  const response = await fetch(`${BASE_URL}/${repositoryId}/save?userId=${userId}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (!response.ok){
+    throw new Error(`Error saving repository: ${response.statusText}`);
+  }
+  // Correctly call response.json()
+  const responseData = await response.json();
+  console.log("Response data from saveRepository:", responseData);
+
+  return responseData;
 
 
+} catch(error){
+  console.error("Error saving repository", error);
+  throw error;
+}
+
+};
 
 
 

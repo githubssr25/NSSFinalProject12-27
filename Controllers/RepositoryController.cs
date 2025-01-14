@@ -236,6 +236,91 @@ public IActionResult UpdateRepository(int repositoryId, [FromBody] UpdateReposit
 }
 
 
+[HttpPost("{repositoryId}/save")]
+public IActionResult SaveRepository(int repositoryId, [FromQuery] string userId)
+{
+    // Log incoming parameters
+    Console.WriteLine($"Incoming request to SaveRepository.");
+    Console.WriteLine($"repositoryId: {repositoryId}, userId: {userId}");
+
+    // Check if userId is null or empty
+    if (string.IsNullOrWhiteSpace(userId))
+    {
+        Console.WriteLine("User ID is null or empty.");
+        return BadRequest("User ID is required.");
+    }
+
+    // Log before querying the repository
+    Console.WriteLine($"Checking if repository with ID {repositoryId} exists in the database.");
+    var repository = _dbContext.Repositories.FirstOrDefault(r => r.RepositoryId == repositoryId);
+
+    if (repository == null)
+    {
+        Console.WriteLine($"Repository with ID {repositoryId} not found.");
+        return NotFound($"Repository with ID {repositoryId} not found.");
+    }
+
+    // Enhanced logging for user-repository relationship
+    Console.WriteLine($"Query Inputs - userId: '{userId}', repositoryId: {repositoryId}");
+
+    // Log all user-repository records for debugging
+    var allUserRepositories = _dbContext.UserRepositories.ToList();
+    Console.WriteLine("Current UserRepositories Table:");
+    foreach (var record in allUserRepositories)
+    {
+        Console.WriteLine($"UserId: '{record.UserId}', RepositoryId: {record.RepositoryId}, SavedAt: {record.SavedAt}");
+    }
+
+    // Find potential matches for repositoryId
+    var potentialMatches = _dbContext.UserRepositories
+        .Where(ur => ur.RepositoryId == repositoryId)
+        .ToList();
+    Console.WriteLine($"Potential Matches for repositoryId {repositoryId}:");
+    foreach (var match in potentialMatches)
+    {
+        Console.WriteLine($"UserId: '{match.UserId}', RepositoryId: {match.RepositoryId}");
+    }
+
+    // Check for an exact match
+    var normalizedUserId = userId.Trim();
+    var exactMatch = potentialMatches.FirstOrDefault(ur => ur.UserId.Trim() == normalizedUserId);
+
+    if (exactMatch != null)
+    {
+        Console.WriteLine($"Exact match found for userId: '{userId}' and repositoryId: {repositoryId}");
+        return BadRequest("Repository is already saved by the user.");
+    }
+
+    // Log before creating the user-repository join
+    Console.WriteLine($"Creating a new user-repository association for userId: {userId}, repositoryId: {repositoryId}.");
+    var userRepositoryJoin = new UserRepository
+    {
+        UserId = userId,
+        RepositoryId = repository.RepositoryId,
+        SavedAt = DateTime.UtcNow
+    };
+
+    try
+    {
+        // Save the user-repository association to the database
+        _dbContext.UserRepositories.Add(userRepositoryJoin);
+        _dbContext.SaveChanges();
+        Console.WriteLine($"User {userId} successfully saved repository {repositoryId}.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error saving user-repository association: {ex.Message}");
+        return StatusCode(500, "Internal server error.");
+    }
+
+    // Return a success response
+    return Ok(new
+    {
+        message = "Repository saved successfully",
+        savedRepository = userRepositoryJoin
+    });
+}
+
 
 
 
