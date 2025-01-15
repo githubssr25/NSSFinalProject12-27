@@ -134,7 +134,7 @@ return (
             value={formData.stars}
             onChange={handleChangeForm}
             min="1"
-            max="5"
+            max="50"
           />
         </div>
        
