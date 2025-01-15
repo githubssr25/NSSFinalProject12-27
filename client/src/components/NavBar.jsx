@@ -16,9 +16,9 @@ export const NavBar = ({ loggedInUser, setLoggedInUser }) => {
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/users">Users</Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/repositories">View All Saved Repositories</Link>
         </li>
