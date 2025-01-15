@@ -14,8 +14,7 @@ public class Repository {
     public int Stars { get; set; }
     public int? CategoryId { get; set; } // Foreign Ke
 
-
-
+    public string? CreatorUserId { get; set; }
 
     // Navigation Properties
     public Category Category { get; set; }

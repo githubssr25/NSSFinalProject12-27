@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NSSFinalProject12_27.Context;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NSSFinalProject12_27.Migrations
 {
     [DbContext(typeof(NSSFinalProjectDbContext))]
-    partial class NSSFinalProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250115211906_AddCreatorUserIdToRepository")]
+    partial class AddCreatorUserIdToRepository
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,7 +189,7 @@ namespace NSSFinalProject12_27.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Annotations", (string)null);
+                    b.ToTable("Annotations");
 
                     b.HasData(
                         new
@@ -304,7 +307,7 @@ namespace NSSFinalProject12_27.Migrations
 
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
 
                     b.HasData(
                         new
@@ -391,7 +394,7 @@ namespace NSSFinalProject12_27.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Repositories", (string)null);
+                    b.ToTable("Repositories");
 
                     b.HasData(
                         new
@@ -763,7 +766,7 @@ namespace NSSFinalProject12_27.Migrations
 
                     b.HasIndex("RepositoryId");
 
-                    b.ToTable("UserRepositories", (string)null);
+                    b.ToTable("UserRepositories");
 
                     b.HasData(
                         new
