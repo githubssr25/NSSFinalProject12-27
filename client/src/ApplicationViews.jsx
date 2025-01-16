@@ -79,7 +79,7 @@ A route with path="/" is the parent route. All other routes nested inside it (de
           path="user/:userId"
           element={<RepositoriesForUser loggedInUser={loggedInUser} />}
           />
-            <Route path="delete/:repositoryId" element={<DeleteRepository />} /> 
+            <Route path="delete/:repositoryId" element={<DeleteRepository loggedInUser={loggedInUser} />} /> 
             <Route path="edit/:repositoryId" element={<EditRepository loggedInUser={loggedInUser}/>} />
         </Route>
 

@@ -158,6 +158,28 @@ try {
 };
 
 
+export const removeUserFromRepository = async (userId, repositoryId) => {
+  try {
+    const response = await fetch(`${BASE_URL}/user/${userId}/repository/${repositoryId}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      const errorMessage = await response.text();
+      throw new Error(errorMessage || "Failed to remove user from repository.");
+    }
+
+    const result = await response.json();
+console.log(result.message); // Log the message
+return result;
+
+  } catch (error) {
+    console.error("Error removing user from repository:", error);
+    throw error;
+  }
+};
+
+
 
 
 

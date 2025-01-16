@@ -4,6 +4,8 @@ import { getAnnotationsByUser } from "../manager/annotationsManager";
 import { Link } from "react-router-dom";
 import "./AllAnnotations.css";
 
+
+/* eslint-disable react/prop-types */
 export const AllAnnotations = ({ loggedInUser }) => {
   const [annotations, setAnnotations] = useState([]);
   console.log("what is loggedinUser", loggedInUser);

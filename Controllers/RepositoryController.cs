@@ -240,6 +240,8 @@ public IActionResult UpdateRepository(int repositoryId, [FromBody] UpdateReposit
 }
 
 
+
+//Saves a repository for a specific user by creating a user-repository association.
 [HttpPost("{repositoryId}/save")]
 public IActionResult SaveRepository(int repositoryId, [FromQuery] string userId)
 {
@@ -326,6 +328,23 @@ public IActionResult SaveRepository(int repositoryId, [FromQuery] string userId)
 }
 
 
+[HttpDelete("user/{userId}/repository/{repositoryId}")]
+public IActionResult RemoveUserFromRepository(string userId, int repositoryId)
+{
+    var userRepository = _dbContext.UserRepositories
+        .FirstOrDefault(ur => ur.UserId == userId && ur.RepositoryId == repositoryId);
+
+    if (userRepository == null)
+    {
+        return NotFound("User-repository association not found.");
+    }
+
+    _dbContext.UserRepositories.Remove(userRepository);
+    _dbContext.SaveChanges();
+
+   return Ok(new { message = "User successfully removed from repository." });
+
+}
 
 
 
