@@ -1,8 +1,45 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.row {
+  display: block;
+  gap: 15px;
+  justify-content: flex-start; /* Align items to the left */
+}
+
+.card {
+  flex: 0 1 calc(33.333% - 20px); /* 3 cards per row */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 10px;
+  text-align: left;
+}
+
+.card-footer {
+  text-align: center;
+  padding: 10px;
+}
+
+
+
+
+
+
+
+
 @media (max-width: 768px) {
     /* Adjust container */
     .container {
       padding: 10px; /* Add space within the container */
-      width: 80%; /* Constrain width for smaller screens */
+      /* width: 80%; Constrain width for smaller screens */
+      max-width: 99%; /* Allow container to take up more of the screen */
       margin: 0 auto; /* Center the container */
       text-align: left; /* Ensure alignment */
     
@@ -10,10 +47,11 @@
   
     /* Adjust row layout */
     .row {
+      display: block;
       justify-content: center; /* Center align the cards */
       text-align: left; /* Align content to the left */
       margin: 0 auto; /* Prevent horizontal overflow */
-      width: 100%;
+      width: 140%;
     }
   
     /* Adjust card styles */
