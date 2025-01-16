@@ -24,6 +24,7 @@ namespace NSSFinalProject12_27.Controllers
                 .Select(repo => new RepositoryDTO
                 {
                     RepositoryId = repo.RepositoryId,
+                    CreateUserId = repo.CreatorUserId, // Added CreatorUserId
                     RepositoryName = repo.RepositoryName,
                     RepositoryUrl = repo.RepositoryUrl,
                     Description = repo.Description,
@@ -50,6 +51,7 @@ namespace NSSFinalProject12_27.Controllers
                 .Select(repo => new RepositoryDTO
                 {
                     RepositoryId = repo.RepositoryId,
+                    CreateUserId = repo.CreatorUserId,
                     RepositoryName = repo.RepositoryName,
                     RepositoryUrl = repo.RepositoryUrl,
                     Description = repo.Description,
@@ -118,6 +120,7 @@ namespace NSSFinalProject12_27.Controllers
             Description = createRepositoryDTO.Description,
             Language = createRepositoryDTO.Language,
             Stars = createRepositoryDTO.Stars,
+            CreatorUserId = createRepositoryDTO.UserId,
             CategoryId = createRepositoryDTO.CategoryId, // Can be null
             UserRepositories = new List<UserRepository>() // Initialize navigation property
         };
@@ -185,6 +188,7 @@ public IActionResult GetRepositoryById(int repositoryId)
         .Select(r => new RepositoryDTO
         {
             RepositoryId = r.RepositoryId,
+            CreateUserId = r.CreatorUserId, // Added CreatorUserId
             RepositoryName = r.RepositoryName,
             RepositoryUrl = r.RepositoryUrl,
             Description = r.Description,

@@ -36,12 +36,14 @@ export const RepositoriesForUser = ({ loggedInUser }) => {
             </p>
             {repo.category && <p>Category: {repo.category.description}</p>}
             <div>
+              { repo.createUserId == loggedInUser.id && (
               <Link
                 to={`/repositories/edit/${repo.repositoryId}`}
                 className="btn btn-primary mx-2"
               >
                 Edit
               </Link>
+                )}
               <Link
                 to={`/repositories/delete/${repo.repositoryId}`}
                 className="btn btn-danger mx-2"

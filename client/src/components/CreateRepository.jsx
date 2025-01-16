@@ -14,6 +14,7 @@ export const CreateRepository = ({loggedInUser}) => {
         stars: "",
         categoryId: null,
     });
+    const userId = loggedInUser.id;
 
     const [successMessage, setSuccessMessage] = useState(""); // State for success message
 
@@ -39,13 +40,13 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   const createRepositoryDto = {
+      UserId : userId,
       repositoryName: formData.repositoryName, // Required
       repositoryUrl: formData.repositoryUrl,   // Required
       description: formData.description || null, // Optional
       language: formData.language || null,     // Optional
       stars: parseInt(formData.stars, 10) || 0, // Default to 0 if not provided
       categoryId: formData.categoryId ? parseInt(formData.categoryId, 10) : null, // Null if not selected
-      userId: parseInt(loggedInUser.id, 10)    // Required
   };
 
   console.log("Payload sent to backend:", createRepositoryDto);
