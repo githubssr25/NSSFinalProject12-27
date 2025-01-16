@@ -8,7 +8,7 @@ export const AllRepositories = ({ loggedInUser }) => {
   const [userRepositories, setUserRepositories] = useState([]);
   const userId = loggedInUser.id;
   const [successMessage, setSuccessMessage] = useState("");
-  const [shouldRefreshUserRepos, setShouldRefreshUserRepos] = useState(false); // Boolean trigger for user repositorie
+  // const [shouldRefreshUserRepos, setShouldRefreshUserRepos] = useState(false); // Boolean trigger for user repositorie
   const [notYourRepos, setNotYourRepos] = useState([]);
 
   console.log("what is loggedinUser", loggedInUser);
@@ -41,7 +41,7 @@ export const AllRepositories = ({ loggedInUser }) => {
     };
 
     fetchUserRepositories(); // Fetch user-specific repositories
-  }, [shouldRefreshUserRepos, userId]);
+  }, [userId]);
 
   useEffect(() => {
     const updatedNotYourRepos = repositories.filter((repo) => {
@@ -70,12 +70,18 @@ export const AllRepositories = ({ loggedInUser }) => {
         `Repository '${response.savedRepository.repositoryId}' saved successfully!`
       );
 
-      // Trigger a refresh for user repositories
-      setShouldRefreshUserRepos(true);
+      // Immediately remove the repository from `notYourRepos`
+      setNotYourRepos((prevNotYourRepos) =>
+        prevNotYourRepos.filter((repo) => repo.repositoryId !== repositoryId)
+      );
 
-      // Refresh the repositories list this may not be necessary idk
-      const updatedRepositories = await getAllRepositories();
-      setRepositories(updatedRepositories);
+      // Add the saved repository to `userRepositories`
+      const savedRepo = repositories.find(
+        (repo) => repo.repositoryId === repositoryId
+      );
+      if (savedRepo) {
+        setUserRepositories((prevUserRepos) => [...prevUserRepos, savedRepo]);
+      }
     } catch (error) {
       alert("Failed to save repository. Please try again.");
       console.error("Error saving repository:", error);

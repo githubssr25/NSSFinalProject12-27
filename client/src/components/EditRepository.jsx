@@ -120,7 +120,7 @@ export const EditRepository = ({ loggedInUser }) => {
             value={formData.stars}
             onChange={handleChangeForm}
             min="0"
-            max="5"
+            max="100"
             className="form-control"
           />
         </div>
