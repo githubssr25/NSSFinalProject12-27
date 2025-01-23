@@ -197,74 +197,181 @@ namespace NSSFinalProject12_27.Context
     );
 
 // //     // Seed Repositories
-// modelBuilder.Entity<Repository>().HasData(
-//     new Repository
-//     {
-//         RepositoryId = 1,
-//         RepositoryName = "Backend Framework",
-//         RepositoryUrl = "https://github.com/example/backend-framework",
-//         Description = "A powerful backend framework for building scalable applications.",
-//         Language = "C#",
-//         Stars = 1200,
-//         CategoryId = 1,
-//         CreatorUserId = "1" // John Doe
-//     },
-//     new Repository
-//     {
-//         RepositoryId = 2,
-//         RepositoryName = "Frontend Library",
-//         RepositoryUrl = "https://github.com/example/frontend-library",
-//         Description = "A sleek and efficient frontend library.",
-//         Language = "JavaScript",
-//         Stars = 950,
-//         CategoryId = 2,
-//         CreatorUserId = "2" // Jane Smith
-//     },
-//     new Repository
-//     {
-//         RepositoryId = 3,
-//         RepositoryName = "AI Toolkit",
-//         RepositoryUrl = "https://github.com/example/ai-toolkit",
-//         Description = "A comprehensive toolkit for AI research.",
-//         Language = "Python",
-//         Stars = 2500,
-//         CategoryId = 3,
-//         CreatorUserId = "3" // Alice Brown
-//     },
-//     new Repository
-//     {
-//         RepositoryId = 4,
-//         RepositoryName = "Data Science Hub",
-//         RepositoryUrl = "https://github.com/example/data-science-hub",
-//         Description = "A hub of resources for data scientists.",
-//         Language = "R",
-//         Stars = 1800,
-//         CategoryId = 5,
-//         CreatorUserId = "4" // Bob Jones
-//     },
-//     new Repository
-//     {
-//         RepositoryId = 5,
-//         RepositoryName = "Testing Framework",
-//         RepositoryUrl = "https://github.com/example/testing-framework",
-//         Description = "An intuitive testing framework.",
-//         Language = "Java",
-//         Stars = 700,
-//         CategoryId = 7,
-//         CreatorUserId = "5" // Carla White
-//     },
-//     new Repository
-//     {
-//         RepositoryId = 6,
-//         RepositoryName = "Cyber Security Toolkit",
-//         RepositoryUrl = "https://github.com/example/security-toolkit",
-//         Description = "A comprehensive toolkit for cyber security.",
-//         Language = "Python",
-//         Stars = 1300,
-//         CategoryId = 6,
-//         CreatorUserId = "6" // Michael Green
-//     }
-// );
+modelBuilder.Entity<Repository>().HasData(
+    new Repository
+    {
+        RepositoryId = 1,
+        RepositoryName = "Backend Framework",
+        RepositoryUrl = "https://github.com/example/backend-framework",
+        Description = "A powerful backend framework for building scalable applications.",
+        Language = "C#",
+        Stars = 1200,
+        CategoryId = 1,
+        CreatorUserId = "1" // John Doe
+    },
+    new Repository
+    {
+        RepositoryId = 2,
+        RepositoryName = "Frontend Library",
+        RepositoryUrl = "https://github.com/example/frontend-library",
+        Description = "A sleek and efficient frontend library.",
+        Language = "JavaScript",
+        Stars = 950,
+        CategoryId = 2,
+        CreatorUserId = "2" // Jane Smith
+    },
+    new Repository
+    {
+        RepositoryId = 3,
+        RepositoryName = "AI Toolkit",
+        RepositoryUrl = "https://github.com/example/ai-toolkit",
+        Description = "A comprehensive toolkit for AI research.",
+        Language = "Python",
+        Stars = 2500,
+        CategoryId = 3,
+        CreatorUserId = "3" // Alice Brown
+    },
+    new Repository
+    {
+        RepositoryId = 4,
+        RepositoryName = "Data Science Hub",
+        RepositoryUrl = "https://github.com/example/data-science-hub",
+        Description = "A hub of resources for data scientists.",
+        Language = "R",
+        Stars = 1800,
+        CategoryId = 5,
+        CreatorUserId = "4" // Bob Jones
+    },
+    new Repository
+    {
+        RepositoryId = 5,
+        RepositoryName = "Testing Framework",
+        RepositoryUrl = "https://github.com/example/testing-framework",
+        Description = "An intuitive testing framework.",
+        Language = "Java",
+        Stars = 700,
+        CategoryId = 7,
+        CreatorUserId = "5" // Carla White
+    },
+    new Repository
+    {
+        RepositoryId = 6,
+        RepositoryName = "Cyber Security Toolkit",
+        RepositoryUrl = "https://github.com/example/security-toolkit",
+        Description = "A comprehensive toolkit for cyber security.",
+        Language = "Python",
+        Stars = 1300,
+        CategoryId = 6,
+        CreatorUserId = "6" // Michael Green
+    }
+);
+
+
+// Seed Repositories
+modelBuilder.Entity<Repository>().HasData(
+    new Repository
+    {
+        RepositoryId = 7,
+        RepositoryName = "AI-Powered Threat Detection",
+        RepositoryUrl = "https://github.com/example/ai-threat-detection",
+        Description = "An AI-driven system to detect and prevent security threats.",
+        Language = "Python",
+        Stars = 1700,
+        CategoryId = 6,
+        CreatorUserId = "7" // Linda Lee
+    },
+    new Repository
+    {
+        RepositoryId = 8,
+        RepositoryName = "Cloud Security Suite",
+        RepositoryUrl = "https://github.com/example/cloud-security-suite",
+        Description = "A suite of tools to secure cloud environments efficiently.",
+        Language = "Go",
+        Stars = 1900,
+        CategoryId = 6,
+        CreatorUserId = "8" // James Brown
+    }, 
+     new Repository
+    {
+        RepositoryId = 9,
+        RepositoryName = "Web Scraper Pro",
+        RepositoryUrl = "https://github.com/example/web-scraper-pro",
+        Description = "A powerful web scraping tool with automation features.",
+        Language = "JavaScript",
+        Stars = 1500,
+        CategoryId = 2,
+        CreatorUserId = "9" // Emma Clark
+    },
+    new Repository
+    {
+        RepositoryId = 10,
+        RepositoryName = "Machine Learning Sandbox",
+        RepositoryUrl = "https://github.com/example/ml-sandbox",
+        Description = "An interactive sandbox for machine learning models.",
+        Language = "Python",
+        Stars = 2000,
+        CategoryId = 8,
+        CreatorUserId = "10" // Daniel Evans
+    },
+    new Repository
+    {
+        RepositoryId = 11,
+        RepositoryName = "Full Stack Starter Kit",
+        RepositoryUrl = "https://github.com/example/full-stack-starter",
+        Description = "A starter kit for full stack development projects.",
+        Language = "TypeScript",
+        Stars = 1500,
+        CategoryId = 4,
+        CreatorUserId = "2" 
+    },
+    new Repository
+    {
+        RepositoryId = 12,
+        RepositoryName = "Data Visualization Library",
+        RepositoryUrl = "https://github.com/example/data-visualization-lib",
+        Description = "A library for creating stunning data visualizations.",
+        Language = "JavaScript",
+        Stars = 1400,
+        CategoryId = 5,
+        CreatorUserId = "4" 
+    }
+);
+
+
+// Seed UserRepositories
+modelBuilder.Entity<UserRepository>().HasData(
+  
+    new UserRepository { UserId = "1", RepositoryId = 1, SavedAt = DateTime.UtcNow },  // John Doe
+    new UserRepository { UserId = "2", RepositoryId = 2, SavedAt = DateTime.UtcNow },  // Jane Smith
+    new UserRepository { UserId = "3", RepositoryId = 3, SavedAt = DateTime.UtcNow },  // Alice Brown
+    new UserRepository { UserId = "4", RepositoryId = 4, SavedAt = DateTime.UtcNow },  // Bob Jones
+    new UserRepository { UserId = "5", RepositoryId = 5, SavedAt = DateTime.UtcNow },  // Carla White
+    new UserRepository { UserId = "6", RepositoryId = 6, SavedAt = DateTime.UtcNow },  // Michael Green
+    new UserRepository { UserId = "7", RepositoryId = 7, SavedAt = DateTime.UtcNow },   // Linda Lee
+    new UserRepository { UserId = "8", RepositoryId = 8, SavedAt = DateTime.UtcNow },  // James Brown
+    new UserRepository { UserId = "9", RepositoryId = 9, SavedAt = DateTime.UtcNow },  // Emma Clark
+    new UserRepository { UserId = "10", RepositoryId = 10, SavedAt = DateTime.UtcNow }, // Daniel Evans
+    new UserRepository { UserId = "2", RepositoryId = 11, SavedAt = DateTime.UtcNow },
+    new UserRepository { UserId = "4", RepositoryId = 12, SavedAt = DateTime.UtcNow },
+     // Additional users for repositories 3, 5, 6, 7, 8
+    new UserRepository { UserId = "6", RepositoryId = 3, SavedAt = DateTime.UtcNow },  
+    new UserRepository { UserId = "8", RepositoryId = 3, SavedAt = DateTime.UtcNow },  
+
+    new UserRepository { UserId = "1", RepositoryId = 5, SavedAt = DateTime.UtcNow },  
+    new UserRepository { UserId = "3", RepositoryId = 5, SavedAt = DateTime.UtcNow },  
+    new UserRepository { UserId = "9", RepositoryId = 5, SavedAt = DateTime.UtcNow },  
+
+    new UserRepository { UserId = "2", RepositoryId = 6, SavedAt = DateTime.UtcNow },  
+    new UserRepository { UserId = "5", RepositoryId = 6, SavedAt = DateTime.UtcNow },  
+
+    new UserRepository { UserId = "4", RepositoryId = 7, SavedAt = DateTime.UtcNow },  
+    new UserRepository { UserId = "9", RepositoryId = 7, SavedAt = DateTime.UtcNow },  
+    new UserRepository { UserId = "10", RepositoryId = 7, SavedAt = DateTime.UtcNow },  
+
+    new UserRepository { UserId = "3", RepositoryId = 8, SavedAt = DateTime.UtcNow },  
+    new UserRepository { UserId = "6", RepositoryId = 8, SavedAt = DateTime.UtcNow },  
+    new UserRepository { UserId = "7", RepositoryId = 8, SavedAt = DateTime.UtcNow }  
+);
 
 
 // //     // Seed UserRepositories
@@ -288,171 +395,102 @@ modelBuilder.Entity<Annotation>().HasData(
         Type = "Note",
         Content = "This backend framework looks promising for my next project.",
         CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
-    },
-    new Annotation
-    {
-        AnnotationId = 2,
-        UserId = "2",
-        RepositoryId = 2,
-        Type = "Note",
-        Content = "Great library for frontend animations.",
-        CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
-    },
-    new Annotation
-    {
-        AnnotationId = 3,
-        UserId = "3",
-        RepositoryId = 3,
-        Type = "Tag",
-        Content = "AI",
-        CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
-    },
-    new Annotation
-    {
-        AnnotationId = 4,
-        UserId = "4",
-        RepositoryId = 4,
-        Type = "Note",
-        Content = "Data science repo with useful algorithms.",
-        CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
     }
-);
+    // new Annotation
+    // {
+    //     AnnotationId = 2,
+    //     UserId = "2",
+    //     RepositoryId = 2,
+    //     Type = "Note",
+    //     Content = "Great library for frontend animations.",
+    //     CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
+    // },
+    // new Annotation
+    // {
+    //     AnnotationId = 3,
+    //     UserId = "3",
+    //     RepositoryId = 3,
+    //     Type = "Tag",
+    //     Content = "AI",
+    //     CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
+    // },
+    // new Annotation
+    // {
+    //     AnnotationId = 4,
+    //     UserId = "4",
+    //     RepositoryId = 4,
+    //     Type = "Note",
+    //     Content = "Data science repo with useful algorithms.",
+    //     CreatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc)
+    // }
 
-// Seed Repositories
-modelBuilder.Entity<Repository>().HasData(
-    new Repository
-    {
-        RepositoryId = 8,
-        RepositoryName = "Cyber Security Toolkit",
-        RepositoryUrl = "https://github.com/example/security-toolkit",
-        Description = "A comprehensive toolkit for cyber security.",
-        Language = "Python",
-        Stars = 1300,
-        CategoryId = 6
-    },
-    new Repository
-    {
-        RepositoryId = 9,
-        RepositoryName = "Testing Framework Pro",
-        RepositoryUrl = "https://github.com/example/testing-framework-pro",
-        Description = "A robust framework for automated testing.",
-        Language = "Java",
-        Stars = 1100,
-        CategoryId = 7
-    },
-    new Repository
-    {
-        RepositoryId = 10,
-        RepositoryName = "Machine Learning Sandbox",
-        RepositoryUrl = "https://github.com/example/ml-sandbox",
-        Description = "An interactive sandbox for machine learning models.",
-        Language = "Python",
-        Stars = 2000,
-        CategoryId = 8
-    },
-    new Repository
-    {
-        RepositoryId = 11,
-        RepositoryName = "Full Stack Starter Kit",
-        RepositoryUrl = "https://github.com/example/full-stack-starter",
-        Description = "A starter kit for full stack development projects.",
-        Language = "TypeScript",
-        Stars = 1500,
-        CategoryId = 4
-    },
-    new Repository
-    {
-        RepositoryId = 12,
-        RepositoryName = "Data Visualization Library",
-        RepositoryUrl = "https://github.com/example/data-visualization-lib",
-        Description = "A library for creating stunning data visualizations.",
-        Language = "JavaScript",
-        Stars = 1400,
-        CategoryId = 5
-    }
-);
-
-
-// Seed UserRepositories
-modelBuilder.Entity<UserRepository>().HasData(
-    new UserRepository { UserId = "6", RepositoryId = 8, SavedAt = DateTime.UtcNow },
-    new UserRepository { UserId = "7", RepositoryId = 9, SavedAt = DateTime.UtcNow },
-    new UserRepository { UserId = "8", RepositoryId = 10, SavedAt = DateTime.UtcNow },
-    new UserRepository { UserId = "9", RepositoryId = 11, SavedAt = DateTime.UtcNow },
-    new UserRepository { UserId = "10", RepositoryId = 12, SavedAt = DateTime.UtcNow },
-    new UserRepository { UserId = "1", RepositoryId = 9, SavedAt = DateTime.UtcNow },
-    new UserRepository { UserId = "2", RepositoryId = 10, SavedAt = DateTime.UtcNow },
-    new UserRepository { UserId = "3", RepositoryId = 11, SavedAt = DateTime.UtcNow },
-    new UserRepository { UserId = "4", RepositoryId = 12, SavedAt = DateTime.UtcNow },
-    new UserRepository { UserId = "5", RepositoryId = 8, SavedAt = DateTime.UtcNow }
-);
 
 
 // Seed Annotations
-modelBuilder.Entity<Annotation>().HasData(
-    new Annotation
-    {
-        AnnotationId = 6,
-        UserId = "7",
-        RepositoryId = 9,
-        Type = "Tag",
-        Content = "Automated Testing",
-        CreatedAt = DateTime.UtcNow
-    },
-    new Annotation
-    {
-        AnnotationId = 7,
-        UserId = "8",
-        RepositoryId = 10,
-        Type = "Note",
-        Content = "Great sandbox for testing ML algorithms.",
-        CreatedAt = DateTime.UtcNow
-    },
-    new Annotation
-    {
-        AnnotationId = 8,
-        UserId = "9",
-        RepositoryId = 11,
-        Type = "Tag",
-        Content = "Full Stack",
-        CreatedAt = DateTime.UtcNow
-    },
-    new Annotation
-    {
-        AnnotationId = 9,
-        UserId = "10",
-        RepositoryId = 12,
-        Type = "Note",
-        Content = "Awesome data visualization library for presentations.",
-        CreatedAt = DateTime.UtcNow
-    },
-    new Annotation
-    {
-        AnnotationId = 10,
-        UserId = "1",
-        RepositoryId = 9,
-        Type = "Note",
-        Content = "Could use this for testing in our current project.",
-        CreatedAt = DateTime.UtcNow
-    },
-    new Annotation
-    {
-        AnnotationId = 11,
-        UserId = "2",
-        RepositoryId = 10,
-        Type = "Note",
-        Content = "Sandbox looks promising for prototyping new ML models.",
-        CreatedAt = DateTime.UtcNow
-    },
-    new Annotation
-    {
-        AnnotationId = 12,
-        UserId = "3",
-        RepositoryId = 11,
-        Type = "Tag",
-        Content = "Starter Kit",
-        CreatedAt = DateTime.UtcNow
-    }
+// modelBuilder.Entity<Annotation>().HasData(
+//     new Annotation
+//     {
+//         AnnotationId = 6,
+//         UserId = "7",
+//         RepositoryId = 7,
+//         Type = "Tag",
+//         Content = "Automated Testing",
+//         CreatedAt = DateTime.UtcNow
+//     },
+//     new Annotation
+//     {
+//         AnnotationId = 7,
+//         UserId = "8",
+//         RepositoryId = 8,
+//         Type = "Note",
+//         Content = "Great sandbox for testing ML algorithms.",
+//         CreatedAt = DateTime.UtcNow
+//     },
+//     new Annotation
+//     {
+//         AnnotationId = 8,
+//         UserId = "9",
+//         RepositoryId = 9,
+//         Type = "Tag",
+//         Content = "Full Stack",
+//         CreatedAt = DateTime.UtcNow
+//     },
+//     new Annotation
+//     {
+//         AnnotationId = 9,
+//         UserId = "10",
+//         RepositoryId = 10,
+//         Type = "Note",
+//         Content = "Awesome data visualization library for presentations.",
+//         CreatedAt = DateTime.UtcNow
+//     },
+//     new Annotation
+//     {
+//         AnnotationId = 10,
+//         UserId = "6",
+//         RepositoryId = 3,
+//         Type = "Note",
+//         Content = "Could use this for testing in our current project.",
+//         CreatedAt = DateTime.UtcNow
+//     },
+//     new Annotation
+//     {
+//         AnnotationId = 11,
+//         UserId = "4",
+//         RepositoryId = 7,
+//         Type = "Note",
+//         Content = "Sandbox looks promising for prototyping new ML models.",
+//         CreatedAt = DateTime.UtcNow
+//     },
+//     new Annotation
+//     {
+//         AnnotationId = 12,
+//         UserId = "3",
+//         RepositoryId = 8,
+//         Type = "Tag",
+//         Content = "Starter Kit",
+//         CreatedAt = DateTime.UtcNow
+//     }
 );
 
 

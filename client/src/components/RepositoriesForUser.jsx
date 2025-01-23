@@ -44,11 +44,13 @@ export const RepositoriesForUser = ({ loggedInUser }) => {
                 Edit
               </Link>
                 )}
-              <Link
+             <Link
                 to={`/repositories/delete/${repo.repositoryId}`}
                 className="btn btn-danger mx-2"
               >
-                Delete
+                {repo.createUserId == loggedInUser.id
+                  ? "Delete Repository from Application"
+                  : "Remove Repository from Your Account"}
               </Link>
             </div>
           </li>
